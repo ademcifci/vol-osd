@@ -93,9 +93,35 @@ knob, and its *movement* (not its absolute position) is applied to whatever
 you're currently listening through instead. Off by default.
 
 It stands down automatically whenever the knob's card *is* what you're listening
-through (directly, or via an enhancer that mirrors it) — there the knob already
-works, and relaying would fight it. Detection is automatic; there's nothing to
-switch when you change outputs.
+through — there the knob already works natively, and relaying would fight it.
+This is detected automatically only when it's visible to Windows: the exact
+same device, or a sibling endpoint on the same card (e.g. the X3's `Speakers`
+and `SPDIF Out`).
+
+It generally is **not** detectable when an audio enhancer is what's actually
+routed through the knob's card — Windows exposes the enhancer as a completely
+unrelated-looking default device, with no API that reveals what it secretly
+outputs through. **FxSound is a specific, handled exception**: it's open source,
+and its own code (github.com/fxsound2/fxsound-app) shows it always presents one
+fixed virtual device to Windows while auto-following whichever real device it's
+actually rendering to underneath — invisibly to Windows, but it does record
+that real device in its own registry state as part of its device-selection
+bookkeeping. This app reads that live, so FxSound's default is recognized as
+the knob's card automatically whenever that's genuinely what it's using, and
+that recognition keeps up on its own as FxSound's real target changes — no
+setting to maintain. This is reading a third-party app's own undocumented
+state, not a public API, so it's best-effort: if a future FxSound release
+changes that internal structure, this stops finding it (silently - it never
+throws) and the app falls back to normal behavior.
+
+For any other enhancer, or if you know FxSound's real target is fixed and want
+to state it directly instead: Settings → the field under the knob device lets
+you declare a device id once. Whenever it's the current default, the app treats
+it exactly as if the knob's own card were the literal output — no relaying, and
+the OSD shows the knob's real reading instead of suppressing it as meaningless.
+Leave it as None if you don't need it. Unlike the FxSound case above, this is a
+static, one-time mapping — it won't track an enhancer that changes its own real
+target on its own.
 
 This only ever reads the knob's own device, never writes to it. An earlier
 version did write to it — parking it mid-range so it wouldn't go dead at 0%/100%

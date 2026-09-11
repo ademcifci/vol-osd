@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("VolOsd.Tests")]
+
 namespace VolOsd
 {
     /// <summary>
@@ -48,10 +50,35 @@ namespace VolOsd
         private long _budgetWindowStartTicks;
         private float _appliedInWindow;
 
+        // A second, longer-running budget alongside the one above. The short one only ever sees a fast
+        // burst - it resets every second, so a steady drift of a few points every several hundred
+        // milliseconds (real incident: FxSound's own auto-leveling nudging the X3's real hardware volume
+        // on roughly a 0.75s cadence, picked up and relayed as if each nudge were a fresh knob turn) never
+        // trips it, since no single 1-second window ever holds much. That drift ran the default from 2%
+        // to 66% over about nine seconds - "the volume keeps increasing even after you've stopped turning
+        // it," because it was never the knob doing it. This catches sustained movement the short window
+        // is structurally blind to, without needing to identify the source.
+        private long _longBudgetWindowStartTicks;
+        private float _appliedInLongWindow;
+
+        private readonly Func<long> _now;
+
         private static readonly long WriteSuppressionTicks = TimeSpan.FromMilliseconds(400).Ticks;
         private static readonly long EchoSuppressionTicks = TimeSpan.FromMilliseconds(600).Ticks;
         private const float MaxSingleStep = 0.15f;   // bigger than this isn't a knob detent
-        private const float BudgetPerSecond = 0.5f;  // 50 points/sec ceiling - well above real use, well below a runaway
+
+        // 50 points/sec was the original ceiling here, chosen as "well above real use, well below a
+        // runaway" - but a diagnostics report showed a real session hitting exactly that: "moved 52
+        // points in under a second" before tripping, with the default device (FxSound) mirroring the
+        // knob's own card at the time. The trip did its job - it stopped an unbounded runaway - but by
+        // then a real, audible ~50-point jump had already happened, which is exactly the "turns the
+        // volume up too much" this feature exists to prevent. The ceiling itself was the gap: it correctly
+        // bounds worst-case damage, but the bound was too generous. Tightened to 20 points/sec, still well
+        // above what a deliberate volume nudge needs, to cap that worst case much lower.
+        private const float BudgetPerSecond = 0.2f;
+
+        private static readonly long LongBudgetWindowTicks = TimeSpan.FromSeconds(5).Ticks;
+        private const float LongBudgetPerWindow = 0.3f; // 30 points over 5 seconds - generous for a deliberate big adjustment, tight against a sustained drift
 
         /// <summary>Raised when the relay moved the default device, so the OSD can show that
         /// device's level rather than the knob's meaningless one.</summary>
@@ -62,9 +89,18 @@ namespace VolOsd
         public event Action? DisabledForSafety;
 
         public KnobRelay(IAudioDeviceSource monitor, AppSettings settings)
+            : this(monitor, settings, () => DateTime.UtcNow.Ticks)
+        {
+        }
+
+        /// <summary>Test-only seam: the long budget window (see <see cref="LongBudgetWindowTicks"/>) is
+        /// several real seconds wide, and a test proving it trips needs to simulate that elapsed time
+        /// without an actual multi-second sleep.</summary>
+        internal KnobRelay(IAudioDeviceSource monitor, AppSettings settings, Func<long> nowTicks)
         {
             _monitor = monitor;
             _settings = settings;
+            _now = nowTicks;
             CaptureBaseline();
             _monitor.VolumeChanged += OnVolumeChanged;
         }
@@ -92,7 +128,7 @@ namespace VolOsd
             if (WasOurWrite(change.DeviceId, change.Volume))
                 return;
 
-            long nowTicks = DateTime.UtcNow.Ticks;
+            long nowTicks = _now();
 
             // A card can expose several endpoints the driver keeps in sync (the X3 has "Speakers" and
             // "SPDIF Out"). If the DEFAULT device is any endpoint of the knob's own card - not
@@ -101,7 +137,7 @@ namespace VolOsd
             // on top of that races the hardware and double-applies the movement. Membership in the
             // card group (not raw ID equality against a single endpoint) is what actually answers
             // "is this card in the path", so it must be checked here too, not only for the OSD.
-            if (GetKnobDeviceGroup().Contains(_monitor.DefaultDeviceId))
+            if (DefaultIsKnobPath(_monitor.DefaultDeviceId))
             {
                 lock (_lock) { _lastKnobValue = change.Volume; }
                 return;
@@ -160,6 +196,21 @@ namespace VolOsd
                     TripSafety($"moved {_appliedInWindow * 100:0} points in under a second");
                     return;
                 }
+
+                // See the field comment: this is the same token-bucket shape as above, just wider, to
+                // catch a sustained drift that never trips the 1-second bucket because no single second
+                // of it carries much.
+                if (nowTicks - _longBudgetWindowStartTicks > LongBudgetWindowTicks)
+                {
+                    _longBudgetWindowStartTicks = nowTicks;
+                    _appliedInLongWindow = 0f;
+                }
+                _appliedInLongWindow += Math.Abs(delta);
+                if (_appliedInLongWindow > LongBudgetPerWindow)
+                {
+                    TripSafety($"moved {_appliedInLongWindow * 100:0} points over a sustained few seconds");
+                    return;
+                }
             }
 
             if (string.IsNullOrEmpty(defaultId)) return;
@@ -177,6 +228,13 @@ namespace VolOsd
                 // except by value. WasOurWrite's tight match only fires on an actual echo at this
                 // exact value, so a genuine subsequent turn - which lands near the knob's own prior
                 // value, not this one - is unaffected.
+                //
+                // This can't be widened into the same unconditional time-window suppression used below
+                // for sibling endpoints: unlike the default's siblings, the knob device is exactly where
+                // legitimate follow-up turns keep arriving, so blanket-suppressing it after every write
+                // was tried and breaks continuous turning outright (confirmed by
+                // MultipleSmallTurns_TrackCumulatively and the mirror-echo regression test both failing
+                // when that was attempted) - it must stay a value match, not a time window.
                 RecordOurWrite(_settings.KnobDeviceId, target);
 
                 if (_monitor.TrySetVolume(defaultId, target))
@@ -188,6 +246,7 @@ namespace VolOsd
                     // regardless of the echoed value, since per-endpoint dB rounding means it will not
                     // always match the tight value-based check in WasOurWrite.
                     SuppressEcho(GetCardGroup(defaultId), nowTicks);
+                    Diagnostics.Log($"KnobRelay: relayed {delta * 100:+0.0;-0.0} to default, now {target * 100:0.0}%");
                     DefaultVolumeRelayed?.Invoke(target, false);
                 }
             }
@@ -256,9 +315,44 @@ namespace VolOsd
             var group = GetKnobDeviceGroup();
             if (!group.Contains(deviceId)) return false;
 
-            // If the card IS the output, its numbers are the real ones - show them.
-            return !group.Contains(_monitor.DefaultDeviceId);
+            // If the card IS the output - directly, or via a declared passthrough enhancer - its
+            // numbers are the real ones - show them.
+            return !DefaultIsKnobPath(_monitor.DefaultDeviceId);
         }
+
+        /// <summary>
+        /// True when the current default is, functionally, the knob's own card - either directly/via a
+        /// hardware sibling endpoint (detectable), or because it's secretly what an enhancer is really
+        /// rendering to underneath a fixed virtual device. Either way the knob already reaches the
+        /// listener natively, so relaying would double it and its own reading is the real number, not a
+        /// meaningless one.
+        /// </summary>
+        private bool DefaultIsKnobPath(string defaultDeviceId)
+        {
+            var knobGroup = GetKnobDeviceGroup();
+            if (knobGroup.Contains(defaultDeviceId)) return true;
+
+            if (!string.IsNullOrEmpty(_settings.KnobPassthroughDeviceId) && defaultDeviceId == _settings.KnobPassthroughDeviceId)
+                return true;
+
+            // FxSound auto-follows whichever real device was last active and gives Windows no way to
+            // see that - but it does record that real device in its own registry state (see
+            // IAudioDeviceSource.FxSoundRealPlaybackDeviceId). That's a live, self-correcting signal,
+            // better than the static id above, but only trustworthy when the CURRENT default actually
+            // looks like an FxSound device - otherwise a stale value from a past FxSound session could
+            // wrongly stand this down while listening through something FxSound has nothing to do with.
+            if (IsLikelyFxSoundDevice(defaultDeviceId))
+            {
+                var realId = _monitor.FxSoundRealPlaybackDeviceId;
+                if (!string.IsNullOrEmpty(realId) && knobGroup.Contains(realId))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private bool IsLikelyFxSoundDevice(string deviceId) =>
+            _monitor.GetRenderDevices().Any(d => d.Id == deviceId && d.Name.Contains("FxSound", StringComparison.OrdinalIgnoreCase));
 
         private static string CardName(string friendlyName)
         {
@@ -271,7 +365,7 @@ namespace VolOsd
         {
             if (string.IsNullOrEmpty(deviceId)) return;
             lock (_lock)
-                _ourWrites[deviceId] = (value, DateTime.UtcNow.Ticks + WriteSuppressionTicks);
+                _ourWrites[deviceId] = (value, _now() + WriteSuppressionTicks);
         }
 
         /// <summary>Unconditionally ignores any change reported on these devices for a short window,
@@ -296,12 +390,12 @@ namespace VolOsd
             {
                 if (_echoSuppressUntilTicks.TryGetValue(deviceId, out var until))
                 {
-                    if (DateTime.UtcNow.Ticks <= until) return true;
+                    if (_now() <= until) return true;
                     _echoSuppressUntilTicks.Remove(deviceId);
                 }
 
                 if (!_ourWrites.TryGetValue(deviceId, out var pending)) return false;
-                if (DateTime.UtcNow.Ticks > pending.ExpiryTicks)
+                if (_now() > pending.ExpiryTicks)
                 {
                     _ourWrites.Remove(deviceId);
                     return false;

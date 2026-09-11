@@ -38,6 +38,17 @@ namespace VolOsd
         /// current default device instead. Empty = feature off.</summary>
         public string KnobDeviceId { get; set; } = "";
 
+        /// <summary>Optional device id of a virtual/enhancer device (e.g. an FxSound output) that is
+        /// known to actually play through the knob's own card under the hood. Windows has no API that
+        /// exposes that relationship - the enhancer just presents as an unrelated default device - so
+        /// there is nothing to detect it automatically; this lets the user state it once instead of
+        /// manually toggling the knob feature on and off every time they switch to and from that
+        /// enhancer. When the current default matches this id, the relay treats it exactly like the
+        /// knob's card being the literal default: it stands down (the knob already reaches your ears
+        /// natively) and the OSD shows the knob's own real reading instead of suppressing it. Empty =
+        /// no such device declared.</summary>
+        public string KnobPassthroughDeviceId { get; set; } = "";
+
         public string LightBackgroundColorHex { get; set; } = "#E4E4E6";
         public string LightForegroundColorHex { get; set; } = "#1A1A1A";
         public string LightBarColorHex { get; set; } = ThemeHelper.SystemAccentToken;

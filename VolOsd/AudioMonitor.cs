@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Microsoft.Win32;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 
@@ -30,6 +31,33 @@ namespace VolOsd
 
 
         public string DefaultDeviceId => _defaultDeviceId;
+
+        // FxSound (github.com/fxsound2/fxsound-app, audiopassthru/src/sndDevices/sndDevicesReg.cpp +
+        // sndDevicesImplementDeviceRules.cpp) always forces the Windows default to its own fixed
+        // virtual device, and separately auto-selects which real device to actually render to -
+        // invisibly to Windows, and to us. It does persist that real device's id here, though, as part
+        // of its own device-selection bookkeeping. This is reading a third-party app's own undocumented
+        // registry state, not a public API - the path is built from constants baked into their source
+        // (internal version 13, vendor code 23) that could change in a future FxSound release, so this
+        // must never throw or block on failure, only return null and let callers fall back.
+        private const string FxSoundRegistryPath = @"SOFTWARE\DFX\13\23\devices\most_recent_playback";
+
+        public string? FxSoundRealPlaybackDeviceId
+        {
+            get
+            {
+                try
+                {
+                    using var key = Registry.CurrentUser.OpenSubKey(FxSoundRegistryPath);
+                    return key?.GetValue(null) as string;
+                }
+                catch (Exception ex)
+                {
+                    Diagnostics.Log($"FxSoundRealPlaybackDeviceId read failed: {ex.Message}");
+                    return null;
+                }
+            }
+        }
 
         private sealed class WatchedDevice
         {

@@ -13,6 +13,7 @@ namespace VolOsd.Tests
         private readonly Dictionary<string, string> _names = new();
 
         public string DefaultDeviceId { get; set; } = "";
+        public string? FxSoundRealPlaybackDeviceId { get; set; }
         public event Action<VolumeChange>? VolumeChanged;
 
         /// <summary>Every TrySetVolume call this instance has ever received, in order.</summary>

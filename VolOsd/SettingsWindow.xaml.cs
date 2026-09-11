@@ -60,24 +60,29 @@ namespace VolOsd
 
         private void PopulateKnobDevices(IReadOnlyList<RenderDevice> devices)
         {
-            KnobDeviceCombo.Items.Add(new ComboBoxItem { Content = "None", Tag = "" });
+            PopulateDeviceCombo(KnobDeviceCombo, devices, _settings.KnobDeviceId);
+            PopulateDeviceCombo(KnobPassthroughDeviceCombo, devices, _settings.KnobPassthroughDeviceId);
+        }
+
+        private static void PopulateDeviceCombo(ComboBox combo, IReadOnlyList<RenderDevice> devices, string saved)
+        {
+            combo.Items.Add(new ComboBoxItem { Content = "None", Tag = "" });
 
             foreach (var device in devices)
-                KnobDeviceCombo.Items.Add(new ComboBoxItem { Content = device.Name, Tag = device.Id });
+                combo.Items.Add(new ComboBoxItem { Content = device.Name, Tag = device.Id });
 
-            var saved = _settings.KnobDeviceId;
             if (!string.IsNullOrEmpty(saved) && !devices.Any(d => d.Id == saved))
             {
                 // Keep an unplugged selection rather than silently clearing it on save.
-                KnobDeviceCombo.Items.Add(new ComboBoxItem { Content = "(device not connected)", Tag = saved });
+                combo.Items.Add(new ComboBoxItem { Content = "(device not connected)", Tag = saved });
             }
 
-            KnobDeviceCombo.SelectedIndex = 0;
-            for (int i = 0; i < KnobDeviceCombo.Items.Count; i++)
+            combo.SelectedIndex = 0;
+            for (int i = 0; i < combo.Items.Count; i++)
             {
-                if (KnobDeviceCombo.Items[i] is ComboBoxItem item && (string)item.Tag == saved)
+                if (combo.Items[i] is ComboBoxItem item && (string)item.Tag == saved)
                 {
-                    KnobDeviceCombo.SelectedIndex = i;
+                    combo.SelectedIndex = i;
                     break;
                 }
             }
@@ -201,6 +206,7 @@ namespace VolOsd
             _settings.DisplayDurationMs = (int)(DurationSlider.Value * 1000);
             _settings.StartWithWindows = StartWithWindowsCheck.IsChecked == true;
             _settings.KnobDeviceId = (KnobDeviceCombo.SelectedItem as ComboBoxItem)?.Tag as string ?? "";
+            _settings.KnobPassthroughDeviceId = (KnobPassthroughDeviceCombo.SelectedItem as ComboBoxItem)?.Tag as string ?? "";
 
             _settings.DarkBackgroundColorHex = ThemeHelper.ToHex(_darkBackground);
             _settings.DarkForegroundColorHex = ThemeHelper.ToHex(_darkForeground);

@@ -11,7 +11,7 @@
     <AssemblyName>VolOsd</AssemblyName>
     <RootNamespace>VolOsd</RootNamespace>
     <NoWarn>WFAC010</NoWarn>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

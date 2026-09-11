@@ -13,6 +13,7 @@ namespace VolOsd.Tests
         private const string X3Speakers = "x3-speakers";
         private const string X3Spdif = "x3-spdif";
         private const string Jabra = "jabra";
+        private const string FxSound = "fxsound-speakers";
 
         private static FakeAudioDeviceSource MakeSource()
         {
@@ -20,11 +21,15 @@ namespace VolOsd.Tests
             source.AddDevice(X3Speakers, "Speakers (Sound Blaster X3)", 0.08f);
             source.AddDevice(X3Spdif, "SPDIF Out (Sound Blaster X3)", 0.08f);
             source.AddDevice(Jabra, "Speakers (Jabra EVOLVE 20 SE)", 0.50f);
+            source.AddDevice(FxSound, "FxSound Speakers (FxSound Audio Enhancer)", 0.08f);
             return source;
         }
 
         private static AppSettings MakeSettings(string knobDeviceId) =>
             new() { KnobDeviceId = knobDeviceId };
+
+        private static AppSettings MakeSettings(string knobDeviceId, string passthroughDeviceId) =>
+            new() { KnobDeviceId = knobDeviceId, KnobPassthroughDeviceId = passthroughDeviceId };
 
         // Incident: default = one X3 endpoint, knob = the sibling endpoint. The knob's card was
         // already audible via native hardware, but the relay only compared exact endpoint IDs and
@@ -186,6 +191,76 @@ namespace VolOsd.Tests
             Assert.Equal(writesAtTrip, source.Writes.Count);
         }
 
+        // Incident: a diagnostics report from a real session showed the rate limiter tripping only
+        // after "moved 52 points in under a second" - the default device (FxSound) was mirroring the
+        // knob's own card (Sound Blaster X3) at the time. The trip fired and stopped things going
+        // further, but a real, audible ~50-point jump had already landed by then, which is exactly the
+        // "turns the volume up too much" this feature exists to prevent. Eventually tripping isn't
+        // enough - the ceiling itself has to be tight. This asserts the actual relayed movement before
+        // a trip stays well below that old 50-point ceiling.
+        [Fact]
+        public void RapidMovement_CapsActualRelayedMovementWellBelowOldCeiling()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = Jabra; // 0.50 initial
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif));
+
+            float value = 0.08f;
+            for (int i = 0; i < 40; i++)
+            {
+                value += 0.02f;
+                source.RaiseVolumeChanged(X3Spdif, value);
+            }
+
+            float totalMoved = source.Writes.Count == 0 ? 0f : Math.Abs(source.Writes[^1].Volume - 0.50f);
+            Assert.True(totalMoved <= 0.25f,
+                $"expected real relayed movement well below the old 50-point ceiling, but it moved {totalMoved * 100:0} points");
+        }
+
+        // Incident: a diagnostics report showed the default climbing from 2% to 66% over about nine
+        // seconds with nothing looking alarming second-by-second - each step was a plausible ~4-point
+        // nudge spaced roughly 0.75s apart. That cadence was FxSound's own auto-leveling touching the
+        // X3's real hardware volume, not a human hand, but the relay has no way to tell the difference -
+        // it just relayed every one of them. The 1-second budget never saw enough in any single window to
+        // trip, so the drift kept going: "the volume keeps increasing even after you've stopped turning
+        // it." Uses the internal clock seam to simulate several real seconds elapsing without an actual
+        // multi-second sleep.
+        [Fact]
+        public void SustainedDrift_AcrossSeveralSeconds_TripsTheLongerBudget()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = Jabra;
+            long ticks = 0;
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif), () => ticks);
+
+            bool tripped = false;
+            relay.DisabledForSafety += () => tripped = true;
+
+            float value = 0.08f;
+            float maxAppliedInAnySecond = 0f;
+            long lastSecondStart = 0;
+            float appliedThisSecond = 0f;
+
+            for (int i = 0; i < 20 && !tripped; i++)
+            {
+                ticks += TimeSpan.FromMilliseconds(750).Ticks; // well-spaced - never a fast burst
+                if (ticks - lastSecondStart > TimeSpan.TicksPerSecond)
+                {
+                    lastSecondStart = ticks;
+                    appliedThisSecond = 0f;
+                }
+                appliedThisSecond += 0.07f;
+                maxAppliedInAnySecond = Math.Max(maxAppliedInAnySecond, appliedThisSecond);
+
+                value += 0.07f;
+                source.RaiseVolumeChanged(X3Spdif, value);
+            }
+
+            Assert.True(tripped, "a sustained multi-second drift should trip the longer budget");
+            Assert.True(maxAppliedInAnySecond < 0.2f,
+                "the short 1-second budget should never have come close to tripping on its own here - this is specifically testing the longer window");
+        }
+
         [Fact]
         public void ShouldSuppressOsd_TrueForKnobCard_WhenNotDefault()
         {
@@ -221,6 +296,138 @@ namespace VolOsd.Tests
 
             Assert.Empty(source.Writes);
             Assert.False(relay.ShouldSuppressOsd(X3Spdif));
+        }
+
+        // Manual fallback case: some enhancer plays through the knob's own card under the hood, but
+        // Windows exposes it as a completely unrelated-looking default device (no shared name, no
+        // card-group match), and unlike FxSound (below) there's no way to ask it what it's really doing.
+        // KnobPassthroughDeviceId lets the user state that mapping once instead of toggling the whole
+        // feature by hand every time. With it declared, the relay must stand down exactly as it would
+        // if the enhancer's device were literally a member of the knob's card group.
+        [Fact]
+        public void DeclaredPassthroughDevice_AsDefault_StandsDown_NoWrite()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = FxSound;
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif, FxSound));
+
+            source.RaiseVolumeChanged(X3Spdif, 0.10f);
+            source.RaiseVolumeChanged(X3Spdif, 0.12f);
+
+            Assert.Empty(source.Writes);
+        }
+
+        [Fact]
+        public void DeclaredPassthroughDevice_AsDefault_OsdShowsTheKnobsOwnRealReading()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = FxSound;
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif, FxSound));
+
+            // The knob's own number IS the real, audible one here - it must reach the OSD, not be
+            // suppressed as "meaningless".
+            Assert.False(relay.ShouldSuppressOsd(X3Spdif));
+            Assert.False(relay.ShouldSuppressOsd(X3Speakers)); // sibling, same card
+        }
+
+        [Fact]
+        public void DeclaredPassthroughDevice_RelayResumes_WhenDefaultMovesToSomethingElse()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = FxSound;
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif, FxSound));
+
+            source.RaiseVolumeChanged(X3Spdif, 0.10f); // stood down - the declared passthrough is default
+            Assert.Empty(source.Writes);
+
+            // Switch to an output the knob has no native path to - the relay must engage automatically,
+            // with no settings change needed.
+            source.DefaultDeviceId = Jabra;
+            source.RaiseVolumeChanged(X3Spdif, 0.12f); // +0.02 from the last tracked position
+
+            var write = Assert.Single(source.Writes);
+            Assert.Equal(Jabra, write.DeviceId);
+            Assert.Equal(0.52f, write.Volume, 3);
+            Assert.True(relay.ShouldSuppressOsd(X3Spdif)); // meaningless again now that it's not the path
+        }
+
+        [Fact]
+        public void UndeclaredPassthroughDevice_StillRelaysAsBefore()
+        {
+            // No KnobPassthroughDeviceId set - an enhancer default with no declared relationship to the
+            // knob's card must be treated exactly as before this feature existed.
+            var source = MakeSource();
+            source.DefaultDeviceId = FxSound;
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif));
+
+            source.RaiseVolumeChanged(X3Spdif, 0.10f); // +0.02
+
+            var write = Assert.Single(source.Writes);
+            Assert.Equal(FxSound, write.DeviceId);
+            Assert.Equal(0.10f, write.Volume, 3);
+        }
+
+        // Discovered by reading FxSound's own open-source repo (github.com/fxsound2/fxsound-app,
+        // audiopassthru/src/sndDevices/sndDevicesImplementDeviceRules.cpp): it always presents ONE fixed
+        // virtual device to Windows, but auto-follows whichever real device was last actually active
+        // underneath (confirmed by the user's own description of the behavior), with no way for Windows
+        // - or us - to observe that switch. FxSound does record its real target in its own registry
+        // state though (sndDevicesReg.cpp, confirmed present and populated with a real device id on a
+        // live machine); reading that live is a self-updating replacement for a user having to
+        // redeclare KnobPassthroughDeviceId every time FxSound's real target moves on its own.
+        [Fact]
+        public void FxSoundRegistryHint_RealDeviceIsKnobCard_StandsDown_NoWrite()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = FxSound;
+            source.FxSoundRealPlaybackDeviceId = X3Speakers; // FxSound is secretly rendering to the X3
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif)); // no static passthrough declared
+
+            source.RaiseVolumeChanged(X3Spdif, 0.10f);
+
+            Assert.Empty(source.Writes);
+            Assert.False(relay.ShouldSuppressOsd(X3Spdif)); // real number here - show it
+        }
+
+        [Fact]
+        public void FxSoundRegistryHint_UpdatesLive_AsFxSoundsRealTargetChanges_NoSettingsInvolved()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = FxSound;
+            source.FxSoundRealPlaybackDeviceId = X3Speakers; // secretly on the X3 right now
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif));
+
+            source.RaiseVolumeChanged(X3Spdif, 0.10f); // stood down
+            Assert.Empty(source.Writes);
+
+            // FxSound quietly re-targets itself to the Jabra - nothing in Windows reflects this except
+            // FxSound's own registry state updating. No app setting changes; the relay must notice on
+            // its own via the live registry read.
+            source.FxSoundRealPlaybackDeviceId = Jabra;
+            source.RaiseVolumeChanged(X3Spdif, 0.12f); // +0.02 from the last tracked position
+
+            var write = Assert.Single(source.Writes);
+            Assert.Equal(FxSound, write.DeviceId); // still relay onto the Windows-visible default
+            Assert.Equal(0.10f, write.Volume, 3); // FxSound's own volume (0.08 initial) + 0.02
+        }
+
+        // Guard: the registry value is a snapshot from whenever FxSound last ran its device-selection
+        // logic, not something updated the instant it changes. If the CURRENT default isn't even an
+        // FxSound device, a stale value naming the knob's card must not wrongly stand the relay down -
+        // that would silently break the knob for a setup that has nothing to do with FxSound.
+        [Fact]
+        public void FxSoundRegistryHint_Ignored_WhenCurrentDefaultIsNotAnFxSoundDevice()
+        {
+            var source = MakeSource();
+            source.DefaultDeviceId = Jabra; // genuinely Jabra, no FxSound involved right now
+            source.FxSoundRealPlaybackDeviceId = X3Speakers; // stale value from some earlier session
+            var relay = new KnobRelay(source, MakeSettings(X3Spdif));
+
+            source.RaiseVolumeChanged(X3Spdif, 0.10f); // +0.02, must relay normally
+
+            var write = Assert.Single(source.Writes);
+            Assert.Equal(Jabra, write.DeviceId);
+            Assert.Equal(0.52f, write.Volume, 3);
         }
     }
 }
