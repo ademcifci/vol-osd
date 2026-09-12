@@ -86,7 +86,7 @@ var
 begin
   Exec(ExpandConstant('{sys}\taskkill.exe'), '/f /im {#AppExeName}', '',
        SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  Exec(ExpandConstant('{sys}\taskkill.exe'), '/f /im VolOsd.exe',
+  Exec(ExpandConstant('{sys}\taskkill.exe'), '/f /im VolOsd.exe', '',
        SW_HIDE, ewWaitUntilTerminated, ResultCode);
 end;
 
