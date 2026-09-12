@@ -26,7 +26,6 @@ namespace VolOsd.Tests
                 DarkForegroundColorHex = "#EEEEEE",
                 DarkBarColorHex = "accent",
                 KnobDeviceId = "{some-device-id}",
-                KnobPassthroughDeviceId = "{some-other-device-id}",
                 LightBackgroundColorHex = "#F0F0F0",
                 LightForegroundColorHex = "#101010",
                 LightBarColorHex = "#00FF00"
@@ -44,7 +43,6 @@ namespace VolOsd.Tests
             Assert.Equal(original.DarkBackgroundColorHex, restored.DarkBackgroundColorHex);
             Assert.Equal(original.DarkBarColorHex, restored.DarkBarColorHex);
             Assert.Equal(original.KnobDeviceId, restored.KnobDeviceId);
-            Assert.Equal(original.KnobPassthroughDeviceId, restored.KnobPassthroughDeviceId);
             Assert.Equal(original.LightBarColorHex, restored.LightBarColorHex);
         }
 
@@ -84,7 +82,6 @@ namespace VolOsd.Tests
             Assert.Equal(OsdTheme.Auto, settings.Theme);
             Assert.False(settings.StartWithWindows);
             Assert.Equal("", settings.KnobDeviceId);
-            Assert.Equal("", settings.KnobPassthroughDeviceId);
             Assert.True(ThemeHelper.IsSystemAccentToken(settings.DarkBarColorHex));
             Assert.True(ThemeHelper.IsSystemAccentToken(settings.LightBarColorHex));
         }

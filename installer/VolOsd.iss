@@ -2,7 +2,7 @@
 ; Build with:  "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\VolOsd.iss
 ; Expects a framework-dependent publish in ..\publish (see README).
 
-#define AppName        "Vol OSD"
+#define AppName        "X3 Vol OSD"
 ; Passed in by build.ps1 (/DAppVersion=...); the fallback keeps a manual ISCC run working.
 #ifndef AppVersion
   #define AppVersion   "1.0.0"

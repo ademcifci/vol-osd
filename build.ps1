@@ -11,7 +11,7 @@ $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
 [xml]$proj = Get-Content "$root\VolOsd\VolOsd.csproj"
 $version = ($proj.Project.PropertyGroup.Version | Where-Object { $_ }) | Select-Object -First 1
 if (-not $version) { throw "No <Version> found in VolOsd.csproj" }
-Write-Host "Building Vol OSD $version" -ForegroundColor Cyan
+Write-Host "Building X3 Vol OSD $version" -ForegroundColor Cyan
 
 Remove-Item "$root\publish", "$root\dist" -Recurse -Force -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Path "$root\dist" -Force | Out-Null

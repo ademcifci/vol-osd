@@ -1,7 +1,7 @@
 <Window x:Class="VolOsd.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Vol OSD Settings"
+        Title="X3 Vol OSD Settings"
         Width="420"
         Height="700"
         MinWidth="380"
@@ -158,7 +158,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Hardware knob -->
+        <!-- Knob device -->
         <Border CornerRadius="8" Background="{DynamicResource CardBackgroundBrush}" Margin="0,0,0,14">
             <StackPanel>
                 <Grid Height="52" Margin="14,0">
@@ -166,28 +166,14 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Knob controls default device" FontSize="14" VerticalAlignment="Center"
+                    <TextBlock Grid.Column="0" Text="Knob device" FontSize="14" VerticalAlignment="Center"
                                TextTrimming="CharacterEllipsis" Margin="0,0,10,0"
-                               ToolTip="Knob controls default device"/>
+                               ToolTip="Knob device"/>
                     <ComboBox x:Name="KnobDeviceCombo" Grid.Column="1" Width="200" VerticalAlignment="Center"/>
                 </Grid>
                 <TextBlock Margin="14,0,14,12" TextWrapping="Wrap" FontSize="12"
                            Foreground="{DynamicResource SubtleForegroundBrush}"
-                           Text="Pick a sound card whose hardware volume knob should adjust whatever you're currently listening through. Leave as None to disable."/>
-
-                <Grid Height="52" Margin="14,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="...also plays through the knob's card as" FontSize="14" VerticalAlignment="Center"
-                               TextTrimming="CharacterEllipsis" Margin="0,0,10,0"
-                               ToolTip="Also plays through the knob's card as"/>
-                    <ComboBox x:Name="KnobPassthroughDeviceCombo" Grid.Column="1" Width="200" VerticalAlignment="Center"/>
-                </Grid>
-                <TextBlock Margin="14,0,14,12" TextWrapping="Wrap" FontSize="12"
-                           Foreground="{DynamicResource SubtleForegroundBrush}"
-                           Text="Optional. If you run audio-enhancement software (e.g. FxSound) that outputs through the knob's card under a different device name, pick it here. Windows can't tell us that on its own. When it's the current default, the knob is treated as already reaching your ears - no relaying, and the OSD shows its real reading."/>
+                           Text="The overlay only appears when this device's volume changes (your X3 hardware knob). Auto-detects SPDIF Out on first run. Pick None to disable."/>
             </StackPanel>
         </Border>
 

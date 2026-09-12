@@ -61,7 +61,6 @@ namespace VolOsd
         private void PopulateKnobDevices(IReadOnlyList<RenderDevice> devices)
         {
             PopulateDeviceCombo(KnobDeviceCombo, devices, _settings.KnobDeviceId);
-            PopulateDeviceCombo(KnobPassthroughDeviceCombo, devices, _settings.KnobPassthroughDeviceId);
         }
 
         private static void PopulateDeviceCombo(ComboBox combo, IReadOnlyList<RenderDevice> devices, string saved)
@@ -206,7 +205,6 @@ namespace VolOsd
             _settings.DisplayDurationMs = (int)(DurationSlider.Value * 1000);
             _settings.StartWithWindows = StartWithWindowsCheck.IsChecked == true;
             _settings.KnobDeviceId = (KnobDeviceCombo.SelectedItem as ComboBoxItem)?.Tag as string ?? "";
-            _settings.KnobPassthroughDeviceId = (KnobPassthroughDeviceCombo.SelectedItem as ComboBoxItem)?.Tag as string ?? "";
 
             _settings.DarkBackgroundColorHex = ThemeHelper.ToHex(_darkBackground);
             _settings.DarkForegroundColorHex = ThemeHelper.ToHex(_darkForeground);

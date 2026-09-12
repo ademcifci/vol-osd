@@ -1,20 +1,17 @@
-# Vol OSD
+# X3 Vol OSD
 
-A tiny tray app that shows a volume on-screen display for changes Windows itself
-doesn't show one for — e.g. the Sound Blaster X3's hardware knob and Creative's
-own mixer, which change the audio endpoint volume directly instead of going
-through the `WM_APPCOMMAND` path the native OSD listens for.
+A tiny tray app that shows a volume on-screen display when you turn the **Sound Blaster X3**
+hardware knob. Windows does not show its native volume OSD for that knob because it changes the
+card's endpoint volume directly instead of going through the path the native flyout listens for.
 
-It watches every active playback device's volume via the Core Audio API
-(`IAudioEndpointVolume`), so it reacts to *any* source of a volume change — and
-not just the current default device, since audio-enhancement software can sit in
-front of the real hardware. It draws its own overlay styled like the native
-Windows flyout.
+The app watches the X3's playback endpoint via the Core Audio API (`IAudioEndpointVolume`) and
+draws its own overlay styled like the native Windows flyout. It is **read-only** — it never writes
+system volume.
 
 ## Requirements
 
-The [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
-(x64). The installer checks for it and points you at the download if it's missing.
+The [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) (x64). The installer
+checks for it and points you at the download if it's missing.
 
 ## Install
 
@@ -22,17 +19,13 @@ Two options, both framework-dependent:
 
 - **`VolOsd-<version>-setup.exe`** — installs per-user (no admin prompt) to
   `%LocalAppData%\Programs\VolOsd`, adds a Start Menu entry and an uninstaller.
-  Uninstalling also removes the autostart entry, but leaves your settings alone.
-- **`VolOsd-<version>-portable.exe`** — a single ~760 KB exe, run it from
-  anywhere. Settings still live in `%AppData%\VolOsd`, so it isn't fully
-  self-contained on a USB stick.
+- **`VolOsd-<version>-portable.exe`** — a single ~760 KB exe, run it from anywhere. Settings live in
+  `%AppData%\VolOsd`.
 
-If the .NET runtime is missing, the installer offers to open the download page;
-the portable exe shows the standard .NET "You must install .NET to run this
-application" dialog, which links to the same place.
+If the .NET runtime is missing, the installer offers to open the download page.
 
-Autostart records the exe's absolute path. If you move the portable exe, the app
-repoints the entry at its new location the next time you run it.
+Autostart records the exe's absolute path. If you move the portable exe, the app repoints the entry
+the next time you run it.
 
 ## Run in development
 
@@ -46,117 +39,29 @@ dotnet run --project VolOsd
 dotnet test VolOsd.Tests
 ```
 
-Focused on `KnobRelay` (the component with the actual bug history: every past regression there was
-a pure logic error, reproducible without touching real hardware via a fake `IAudioDeviceSource`),
-plus `Settings` (JSON round-trip, including the enum-as-string regression) and `IconFactory` (the
-dropped-glyph and PNG-in-small-icon regressions). `build.ps1` runs this suite and refuses to publish
-if it fails.
-
 ## Build a release
 
 ```
 .\build.ps1
 ```
 
-Produces both artifacts in `dist\`. Requires [Inno Setup 6](https://jrsoftware.org/isinfo.php)
-at its default location. The version comes from `<Version>` in `VolOsd.csproj` —
-bump it there and both artifacts follow.
-
-To bundle the runtime instead so it runs with no prerequisite at all, publish with
-`--self-contained -p:IncludeNativeLibrariesForSelfExtract=true`. That gives a single
-~160 MB exe needing no installer and no .NET install.
+Produces both artifacts in `dist\`. Requires [Inno Setup 6](https://jrsoftware.org/isinfo.php) at its
+default location. The version comes from `<Version>` in `VolOsd.csproj`.
 
 ## Usage
 
 - Runs from the tray (speaker icon). No window opens on start.
-- Left-click the tray icon for **Settings**, right-click for the menu
-  (Settings, Start with Windows, Save Diagnostics Report, Exit).
-- Settings: overlay position, size, display duration, theme, and per-theme
-  colours (background, icon & text, bar fill). The bar fill follows your Windows
-  accent colour by default.
+- Left-click the tray icon for **Settings**, right-click for the menu (Settings, Start with Windows,
+  Save Diagnostics Report, Exit).
+- Settings: overlay position, size, display duration, theme, colours, and which X3 endpoint is the
+  knob device.
 - Settings are stored at `%AppData%\VolOsd\settings.json`.
 
-If something's not working, right-click the tray icon → **Save Diagnostics
-Report...**. It bundles the app/OS/.NET versions, every audio device's current
-volume, your settings, and the log into one text file you pick a location for —
-attach that to a bug report. Nothing in it is sensitive (device names and volume
-levels only).
+On first run, if no knob device is configured, the app auto-selects `SPDIF Out (Sound Blaster X3)` if
+present (otherwise any X3 endpoint). The overlay **only** appears when that card's volume changes —
+not when you adjust FxSound, headphones, or other devices in Windows.
 
-## Making a hardware knob control the default device
+The X3 driver keeps sibling endpoints (`Speakers` and `SPDIF Out`) in sync; either works in Settings.
 
-A volume knob on a sound card only moves that card's own volume. If you listen
-through something else — headphones, or an enhancer routed elsewhere — the knob
-does nothing audible.
-
-Settings → **Knob controls default device** fixes that: pick the card with the
-knob, and its *movement* (not its absolute position) is applied to whatever
-you're currently listening through instead. Off by default.
-
-It stands down automatically whenever the knob's card *is* what you're listening
-through — there the knob already works natively, and relaying would fight it.
-This is detected automatically only when it's visible to Windows: the exact
-same device, or a sibling endpoint on the same card (e.g. the X3's `Speakers`
-and `SPDIF Out`).
-
-It generally is **not** detectable when an audio enhancer is what's actually
-routed through the knob's card — Windows exposes the enhancer as a completely
-unrelated-looking default device, with no API that reveals what it secretly
-outputs through. **FxSound is a specific, handled exception**: it's open source,
-and its own code (github.com/fxsound2/fxsound-app) shows it always presents one
-fixed virtual device to Windows while auto-following whichever real device it's
-actually rendering to underneath — invisibly to Windows, but it does record
-that real device in its own registry state as part of its device-selection
-bookkeeping. This app reads that live, so FxSound's default is recognized as
-the knob's card automatically whenever that's genuinely what it's using, and
-that recognition keeps up on its own as FxSound's real target changes — no
-setting to maintain. This is reading a third-party app's own undocumented
-state, not a public API, so it's best-effort: if a future FxSound release
-changes that internal structure, this stops finding it (silently - it never
-throws) and the app falls back to normal behavior.
-
-For any other enhancer, or if you know FxSound's real target is fixed and want
-to state it directly instead: Settings → the field under the knob device lets
-you declare a device id once. Whenever it's the current default, the app treats
-it exactly as if the knob's own card were the literal output — no relaying, and
-the OSD shows the knob's real reading instead of suppressing it as meaningless.
-Leave it as None if you don't need it. Unlike the FxSound case above, this is a
-static, one-time mapping — it won't track an enhancer that changes its own real
-target on its own.
-
-This only ever reads the knob's own device, never writes to it. An earlier
-version did write to it — parking it mid-range so it wouldn't go dead at 0%/100%
-while spinning, then restoring it after — which seemed safely contained to a
-device nothing was listening through. It was not: audio-enhancement software
-(FxSound, specifically) can mirror whatever device it's currently routed to, a
-relationship with no discoverable signal, and that parking leaked straight
-through the mirror into the real output, audibly. The fix is to never write to
-the knob device at all, not to detect that specific case, since the same class
-of problem could exist with software this hasn't been tested against.
-
-Caveats worth knowing:
-
-- Cards often expose several endpoints (the X3 has both `Speakers` and
-  `SPDIF Out`) and the driver keeps them in sync. They're treated as one unit;
-  picking either works.
-- Volume moves in the knob's own step size, so it won't always land on the exact
-  number you started from.
-- Because the knob's device is never written to, turning it past 0% or 100%
-  makes it go dead (no further movement to relay) until turned back the other
-  way — same as it would with no software involved at all.
-- If volume ever moves faster than a real knob could produce, the feature
-  disables itself for the rest of the session and shows a tray notification.
-  Restart the app to re-enable it.
-
-**Safety.** This feature writes system volume in response to hardware events
-with no confirmation step, so a bug here has a worse failure mode than most:
-volume running away. Two independent backstops exist on top of the stand-down
-logic above:
-
-- Writing to a device with sibling endpoints (e.g. the X3's `Speakers` and
-  `SPDIF Out`) can echo back as a notification on the sibling shortly after,
-  which would otherwise look exactly like a fresh knob turn. That echo is
-  suppressed unconditionally for a short window, regardless of its exact value.
-- If volume ever moves faster than any real knob could produce, the feature
-  disables itself for the rest of the session — not a timed pause, since that
-  could just repeat whatever caused it — and shows a tray notification saying
-  so. Restarting the app is what re-enables it.
+If something's not working, right-click the tray icon → **Save Diagnostics Report...** and attach
+the text file to a bug report.

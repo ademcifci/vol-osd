@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Microsoft.Win32;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 
@@ -12,13 +11,10 @@ namespace VolOsd
     public readonly record struct RenderDevice(string Id, string Name);
 
     /// <summary>
-    /// Watches ALL active playback devices' volume via Core Audio, not just the current Windows
-    /// default - some setups (audio-enhancement software, hardware mixers) put a virtual device in
-    /// front of the real hardware as the default, and the physical device's own endpoint volume can
-    /// change independently of it. Raises one event per device per real change; callers decide what
-    /// to do about duplicates across devices.
+    /// Watches active playback devices' volume via Core Audio and raises an event per real change.
+    /// Read-only: this app never writes endpoint volume.
     /// </summary>
-    public sealed class AudioMonitor : IMMNotificationClient, IAudioDeviceSource, IDisposable
+    public sealed class AudioMonitor : IMMNotificationClient, IDisposable
     {
         private readonly MMDeviceEnumerator _enumerator = new();
         private readonly Dictionary<string, WatchedDevice> _watched = new();
@@ -29,35 +25,7 @@ namespace VolOsd
 
         public event Action<VolumeChange>? VolumeChanged;
 
-
         public string DefaultDeviceId => _defaultDeviceId;
-
-        // FxSound (github.com/fxsound2/fxsound-app, audiopassthru/src/sndDevices/sndDevicesReg.cpp +
-        // sndDevicesImplementDeviceRules.cpp) always forces the Windows default to its own fixed
-        // virtual device, and separately auto-selects which real device to actually render to -
-        // invisibly to Windows, and to us. It does persist that real device's id here, though, as part
-        // of its own device-selection bookkeeping. This is reading a third-party app's own undocumented
-        // registry state, not a public API - the path is built from constants baked into their source
-        // (internal version 13, vendor code 23) that could change in a future FxSound release, so this
-        // must never throw or block on failure, only return null and let callers fall back.
-        private const string FxSoundRegistryPath = @"SOFTWARE\DFX\13\23\devices\most_recent_playback";
-
-        public string? FxSoundRealPlaybackDeviceId
-        {
-            get
-            {
-                try
-                {
-                    using var key = Registry.CurrentUser.OpenSubKey(FxSoundRegistryPath);
-                    return key?.GetValue(null) as string;
-                }
-                catch (Exception ex)
-                {
-                    Diagnostics.Log($"FxSoundRealPlaybackDeviceId read failed: {ex.Message}");
-                    return null;
-                }
-            }
-        }
 
         private sealed class WatchedDevice
         {
@@ -123,27 +91,6 @@ namespace VolOsd
                 catch (Exception ex)
                 {
                     Diagnostics.Log($"TryGetVolume failed: {ex.Message}");
-                    return false;
-                }
-            }
-        }
-
-        public bool TrySetVolume(string deviceId, float volume)
-        {
-            if (string.IsNullOrEmpty(deviceId)) return false;
-            volume = Math.Clamp(volume, 0f, 1f);
-
-            lock (_devicesLock)
-            {
-                if (!_watched.TryGetValue(deviceId, out var watched)) return false;
-                try
-                {
-                    watched.Device.AudioEndpointVolume.MasterVolumeLevelScalar = volume;
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Diagnostics.Log($"TrySetVolume failed: {ex.Message}");
                     return false;
                 }
             }
@@ -251,7 +198,6 @@ namespace VolOsd
                 watched.LastVolume = data.MasterVolume;
                 watched.LastMuted = data.Muted;
             }
-
 
             string id;
             lock (_devicesLock)

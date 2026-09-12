@@ -37,7 +37,7 @@ namespace VolOsd
             _notifyIcon = new NotifyIcon
             {
                 Icon = IconFactory.CreateTrayIcon(),
-                Text = "Vol OSD",
+                Text = App.ProductName,
                 Visible = true,
                 ContextMenuStrip = menu
             };
@@ -47,14 +47,6 @@ namespace VolOsd
                 if (e.Button == MouseButtons.Left)
                     SettingsRequested?.Invoke();
             };
-        }
-
-        public void ShowNotification(string title, string text, ToolTipIcon icon = ToolTipIcon.Warning)
-        {
-            _notifyIcon.BalloonTipTitle = title;
-            _notifyIcon.BalloonTipText = text;
-            _notifyIcon.BalloonTipIcon = icon;
-            _notifyIcon.ShowBalloonTip(10000);
         }
 
         public void Dispose()

@@ -17,7 +17,7 @@ namespace VolOsd
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine("Vol OSD diagnostics report");
+            sb.AppendLine($"{App.ProductName} diagnostics report");
             sb.AppendLine($"Generated: {DateTime.Now:yyyy-MM-dd HH:mm:ss zzz}");
             sb.AppendLine();
 
@@ -86,7 +86,7 @@ namespace VolOsd
             {
                 Title = "Save Diagnostics Report",
                 Filter = "Text file (*.txt)|*.txt",
-                FileName = $"VolOsd-diagnostics-{DateTime.Now:yyyyMMdd-HHmmss}.txt",
+                FileName = $"X3VolOsd-diagnostics-{DateTime.Now:yyyyMMdd-HHmmss}.txt",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)
             };
 
@@ -103,7 +103,7 @@ namespace VolOsd
                 Diagnostics.Log($"Failed to save diagnostics report: {ex.Message}");
                 System.Windows.Forms.MessageBox.Show(
                     $"Couldn't save the report:\n{ex.Message}",
-                    "Vol OSD", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    App.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return null;
             }
         }

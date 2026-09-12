@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -9,7 +10,9 @@ namespace VolOsd
 {
     public partial class App : Application
     {
-        private const string SingleInstanceMutexName = "VolOsd-SingleInstance-9F2E4E1E-6B1B-4C7E-9C74-8B6E9D2B2B0B";
+        public const string ProductName = "X3 Vol OSD";
+
+        private const string SingleInstanceMutexName = "X3VolOsd-SingleInstance-9F2E4E1E-6B1B-4C7E-9C74-8B6E9D2B2B0B";
 
         private Mutex? _mutex;
         private AudioMonitor? _audioMonitor;
@@ -17,13 +20,10 @@ namespace VolOsd
         private TrayIconManager? _trayIcon;
         private SettingsWindow? _settingsWindow;
         private AppSettings _settings = new();
-        private KnobRelay? _knobRelay;
         private float _lastVolume;
         private bool _lastMuted;
 
-        // The monitor reports every device, so one physical change arrives several times (a card's
-        // endpoints move together, and an enhancer stacked on top mirrors them). Collapse those for
-        // display, or the OSD redraws repeatedly and flickers between the values each reports.
+        // The X3 driver can notify both Speakers and SPDIF for one detent; collapse those for display.
         private readonly object _osdCoalesceLock = new();
         private float _lastShownVolume = -1f;
         private bool _lastShownMuted;
@@ -59,14 +59,11 @@ namespace VolOsd
                 StartupHelper.RepairPathIfEnabled();
                 _settings = AppSettings.Load();
 
-                _osdWindow = new OsdWindow(_settings);
-
                 _audioMonitor = new AudioMonitor();
-                _audioMonitor.VolumeChanged += OnVolumeChanged;
+                EnsureKnobDeviceConfigured();
 
-                _knobRelay = new KnobRelay(_audioMonitor, _settings);
-                _knobRelay.DefaultVolumeRelayed += (volume, muted) => ShowOsd(volume, muted);
-                _knobRelay.DisabledForSafety += OnKnobRelayDisabledForSafety;
+                _osdWindow = new OsdWindow(_settings);
+                _audioMonitor.VolumeChanged += OnVolumeChanged;
 
                 _trayIcon = new TrayIconManager(_settings);
                 _trayIcon.SettingsRequested += OpenSettings;
@@ -84,20 +81,45 @@ namespace VolOsd
             }
         }
 
+        /// <summary>
+        /// Uses the saved knob endpoint, or auto-detects the Sound Blaster X3 on first run.
+        /// </summary>
+        private void EnsureKnobDeviceConfigured()
+        {
+            if (_audioMonitor == null) return;
+
+            var devices = _audioMonitor.GetRenderDevices();
+            if (!string.IsNullOrEmpty(_settings.KnobDeviceId))
+            {
+                var match = devices.FirstOrDefault(d => d.Id == _settings.KnobDeviceId);
+                if (!string.IsNullOrEmpty(match.Id))
+                    Diagnostics.Log($"Knob device: {match.Name}");
+                else
+                    Diagnostics.Log("Knob device is configured but not currently connected.");
+                return;
+            }
+
+            var detected = KnobDeviceHelper.TryAutoDetectKnobDevice(devices);
+            if (detected == null)
+            {
+                Diagnostics.Log("No Sound Blaster X3 knob device found; OSD will not show until one is configured in Settings.");
+                return;
+            }
+
+            _settings.KnobDeviceId = detected;
+            _settings.Save();
+            var detectedName = devices.First(d => d.Id == detected).Name;
+            Diagnostics.Log($"Auto-detected knob device: {detectedName}");
+        }
+
         private void ApplySystemAccent()
         {
-            // Reflects the user's actual Windows accent (Settings > Personalization > Colors) in our
-            // own UI - the Settings window's Save button, sliders and toggle - instead of a hardcoded blue.
             var accent = ThemeHelper.GetSystemAccentColor();
             Resources["AccentBrush"] = new SolidColorBrush(accent);
             Resources["AccentHoverBrush"] = new SolidColorBrush(ThemeHelper.Lighten(accent, 0.15));
             Resources["AccentPressedBrush"] = new SolidColorBrush(ThemeHelper.Darken(accent, 0.2));
         }
 
-        /// <summary>
-        /// Windows raises this when the user switches light/dark mode or changes their accent color,
-        /// so "Match Windows" keeps matching Windows without needing a restart.
-        /// </summary>
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
             if (e.Category != UserPreferenceCategory.General && e.Category != UserPreferenceCategory.Color)
@@ -112,19 +134,14 @@ namespace VolOsd
 
         private void OnVolumeChanged(VolumeChange change)
         {
-            // When the knob relay is driving, it decides what the OSD shows - the knob card's own
-            // levels are meaningless in that case.
-            if (_knobRelay?.ShouldSuppressOsd(change.DeviceId) == true)
+            if (_audioMonitor == null) return;
+
+            if (!KnobDeviceHelper.IsKnobSource(change.DeviceId, _settings.KnobDeviceId, _audioMonitor.GetRenderDevices()))
                 return;
 
             ShowOsd(change.Volume, change.Muted);
         }
 
-        /// <summary>
-        /// Single entry point for displaying the OSD, so the relay and ordinary notifications share
-        /// one coalescing window - a relayed change also comes back as a real notification from the
-        /// default device moments later, and without this both would redraw.
-        /// </summary>
         private void ShowOsd(float volume, bool muted)
         {
             lock (_osdCoalesceLock)
@@ -142,22 +159,7 @@ namespace VolOsd
             _lastVolume = volume;
             _lastMuted = muted;
 
-            // Fire-and-forget: this runs on an audio COM callback thread, which must not be blocked
-            // waiting on the UI thread. BeginInvoke is also safe if the dispatcher is already shutting
-            // down, where Invoke would throw.
             Dispatcher.BeginInvoke(() => _osdWindow?.Show(volume, muted));
-        }
-
-        /// <summary>
-        /// The knob relay's rate limiter tripped, which means it saw volume moving faster than any
-        /// real knob turn could produce and disabled itself for the rest of this session. This is a
-        /// safety backstop, not routine behaviour - the user needs to know it happened.
-        /// </summary>
-        private void OnKnobRelayDisabledForSafety()
-        {
-            Dispatcher.BeginInvoke(() => _trayIcon?.ShowNotification(
-                "Vol OSD",
-                "The hardware knob feature detected unusually fast volume changes and turned itself off for this session. Your volume has not been changed further. Restart the app to try again, or check the diagnostics report if it keeps happening."));
         }
 
         private void SaveDiagnosticsReport()
@@ -167,7 +169,7 @@ namespace VolOsd
 
             System.Windows.Forms.MessageBox.Show(
                 $"Saved to:\n{path}",
-                "Vol OSD", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
 
         private void OpenSettings()
@@ -194,11 +196,8 @@ namespace VolOsd
 
         protected override void OnExit(ExitEventArgs e)
         {
-            // SystemEvents holds a static reference to its handlers; leaving this attached would keep
-            // the App object alive past shutdown.
             SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
 
-            _knobRelay?.Dispose();
             _trayIcon?.Dispose();
             _audioMonitor?.Dispose();
             if (_mutex != null)
