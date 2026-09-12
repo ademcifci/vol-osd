@@ -1,11 +1,12 @@
 ; Inno Setup script for X3 Vol OSD
 ; Build with:  "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\X3VolOsd.iss
-; Expects a framework-dependent publish in ..\publish (see README).
+; Or run ..\build.ps1 from the repo root (tests, publish, then this script).
+; Expects a framework-dependent publish in ..\publish\X3VolOsd.exe — see README.md.
 
 #define AppName        "X3 Vol OSD"
 ; Passed in by build.ps1 (/DAppVersion=...); the fallback keeps a manual ISCC run working.
 #ifndef AppVersion
-  #define AppVersion   "1.0.0"
+  #define AppVersion   "2.0.0"
 #endif
 #define AppPublisher   "Adem Cifcioglu"
 #define AppExeName     "X3VolOsd.exe"
