@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolOsd", "VolOsd\VolOsd.csproj", "{98CB9125-E07C-4981-AD20-C8E1A8C9A673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X3VolOsd", "X3VolOsd\X3VolOsd.csproj", "{98CB9125-E07C-4981-AD20-C8E1A8C9A673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolOsd.Tests", "VolOsd.Tests\VolOsd.Tests.csproj", "{064E61B2-D0AC-4377-BD9C-625686883D5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X3VolOsd.Tests", "X3VolOsd.Tests\X3VolOsd.Tests.csproj", "{064E61B2-D0AC-4377-BD9C-625686883D5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

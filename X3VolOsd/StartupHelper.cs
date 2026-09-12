@@ -2,12 +2,13 @@ using System;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public static class StartupHelper
     {
         private const string RunKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
-        private const string ValueName = "VolOsd";
+        private const string ValueName = "X3VolOsd";
+        private const string LegacyValueName = "VolOsd";
 
         public static void SetEnabled(bool enabled)
         {
@@ -18,11 +19,15 @@ namespace VolOsd
             {
                 var exePath = Process.GetCurrentProcess().MainModule?.FileName;
                 if (!string.IsNullOrEmpty(exePath))
+                {
                     key.SetValue(ValueName, $"\"{exePath}\"");
+                    key.DeleteValue(LegacyValueName, throwOnMissingValue: false);
+                }
             }
             else
             {
                 key.DeleteValue(ValueName, throwOnMissingValue: false);
+                key.DeleteValue(LegacyValueName, throwOnMissingValue: false);
             }
         }
 
@@ -42,7 +47,11 @@ namespace VolOsd
             try
             {
                 using var key = Registry.CurrentUser.OpenSubKey(RunKeyPath, writable: true);
-                if (key?.GetValue(ValueName) is not string existing) return;
+                if (key == null) return;
+
+                MigrateLegacyAutostartEntry(key);
+
+                if (key.GetValue(ValueName) is not string existing) return;
 
                 var exePath = Process.GetCurrentProcess().MainModule?.FileName;
                 if (string.IsNullOrEmpty(exePath)) return;
@@ -57,6 +66,19 @@ namespace VolOsd
             {
                 Diagnostics.Log($"Autostart path repair failed: {ex.Message}");
             }
+        }
+
+        private static void MigrateLegacyAutostartEntry(RegistryKey key)
+        {
+            if (key.GetValue(ValueName) != null) return;
+            if (key.GetValue(LegacyValueName) is not string legacy) return;
+
+            var exePath = Process.GetCurrentProcess().MainModule?.FileName;
+            if (string.IsNullOrEmpty(exePath)) return;
+
+            key.SetValue(ValueName, $"\"{exePath}\"");
+            key.DeleteValue(LegacyValueName, throwOnMissingValue: false);
+            Diagnostics.Log($"Migrated autostart entry from {LegacyValueName} to {ValueName} (was: {legacy})");
         }
     }
 }

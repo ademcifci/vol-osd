@@ -1,8 +1,8 @@
-using VolOsd;
+using X3VolOsd;
 using Color = System.Windows.Media.Color;
 using Colors = System.Windows.Media.Colors;
 
-namespace VolOsd.Tests
+namespace X3VolOsd.Tests
 {
     public class ThemeHelperTests
     {

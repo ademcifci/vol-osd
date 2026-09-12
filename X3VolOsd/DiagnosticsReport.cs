@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     /// <summary>
     /// Bundles everything useful for a bug report into one plain-text file: app/OS/runtime versions,

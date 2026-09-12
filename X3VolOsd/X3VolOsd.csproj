@@ -8,8 +8,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <AssemblyName>VolOsd</AssemblyName>
-    <RootNamespace>VolOsd</RootNamespace>
+    <AssemblyName>X3VolOsd</AssemblyName>
+    <RootNamespace>X3VolOsd</RootNamespace>
     <NoWarn>WFAC010</NoWarn>
     <Version>2.0.0</Version>
   </PropertyGroup>

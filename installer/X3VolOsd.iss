@@ -1,5 +1,5 @@
-; Inno Setup script for Vol OSD
-; Build with:  "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\VolOsd.iss
+; Inno Setup script for X3 Vol OSD
+; Build with:  "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\X3VolOsd.iss
 ; Expects a framework-dependent publish in ..\publish (see README).
 
 #define AppName        "X3 Vol OSD"
@@ -8,11 +8,11 @@
   #define AppVersion   "1.0.0"
 #endif
 #define AppPublisher   "Adem Cifcioglu"
-#define AppExeName     "VolOsd.exe"
+#define AppExeName     "X3VolOsd.exe"
 #define DotNetUrl      "https://dotnet.microsoft.com/download/dotnet/8.0"
 
 [Setup]
-AppId={{8E4C1B27-95A6-4D3F-B1E8-6C2A7F0D4E93}
+AppId={{3F8A2C19-6D4E-4B1A-9E7F-2C5D8A1B0E43}
 AppName={#AppName}
 AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
@@ -21,7 +21,7 @@ VersionInfoVersion={#AppVersion}
 ; Per-user install: no admin prompt, and it matches the per-user (HKCU) autostart entry
 ; the app writes for "Start with Windows".
 PrivilegesRequired=lowest
-DefaultDirName={autopf}\VolOsd
+DefaultDirName={autopf}\X3VolOsd
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 DisableDirPage=auto
@@ -29,10 +29,10 @@ DisableDirPage=auto
 ArchitecturesAllowed=x64compatible
 UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\{#AppExeName}
-SetupIconFile=..\VolOsd\app.ico
+SetupIconFile=..\X3VolOsd\app.ico
 
 OutputDir=..\dist
-OutputBaseFilename=VolOsd-{#AppVersion}-setup
+OutputBaseFilename=X3VolOsd-{#AppVersion}-setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -54,8 +54,6 @@ Filename: "{app}\{#AppExeName}"; Description: "Launch {#AppName}"; Flags: nowait
 const
   RunKey = 'Software\Microsoft\Windows\CurrentVersion\Run';
 
-{ The app is framework-dependent, so it needs the .NET 8 Desktop Runtime. Without this check
-  it would install fine and then simply fail to start, with no useful explanation. }
 function IsDotNet8DesktopInstalled(): Boolean;
 var
   BasePath: String;
@@ -82,12 +80,13 @@ begin
   end;
 end;
 
-{ The exe is locked while the tray app is running, which would make an upgrade fail. }
 procedure StopRunningApp();
 var
   ResultCode: Integer;
 begin
   Exec(ExpandConstant('{sys}\taskkill.exe'), '/f /im {#AppExeName}', '',
+       SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec(ExpandConstant('{sys}\taskkill.exe'), '/f /im VolOsd.exe',
        SW_HIDE, ewWaitUntilTerminated, ResultCode);
 end;
 
@@ -120,7 +119,7 @@ begin
   if CurUninstallStep = usUninstall then
   begin
     StopRunningApp();
-    { Otherwise a stale "Start with Windows" entry keeps pointing at the deleted exe. }
+    RegDeleteValue(HKEY_CURRENT_USER, RunKey, 'X3VolOsd');
     RegDeleteValue(HKEY_CURRENT_USER, RunKey, 'VolOsd');
   end;
 end;

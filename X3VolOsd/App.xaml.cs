@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Media;
 using Microsoft.Win32;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public partial class App : Application
     {

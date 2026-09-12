@@ -1,11 +1,11 @@
 using System.Text.Json;
-using VolOsd;
+using X3VolOsd;
 
-namespace VolOsd.Tests
+namespace X3VolOsd.Tests
 {
     /// <summary>
     /// Deliberately does not call AppSettings.Save()/Load() anywhere in this file: those read and
-    /// write the real per-user settings file at %AppData%\VolOsd\settings.json, and a test must never
+    /// write the real per-user settings file at %AppData%\X3VolOsd\settings.json, and a test must never
     /// touch a real user's actual configuration as a side effect of running. Everything here goes
     /// through AppSettings.JsonOptions directly, which is the exact same serialization contract
     /// Save/Load use internally - what's actually being protected against regressing.

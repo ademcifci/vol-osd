@@ -3,7 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public enum OsdPosition
     {
@@ -51,11 +51,12 @@ namespace VolOsd
             Converters = { new JsonStringEnumConverter() }
         };
 
-        public static string FilePath =>
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "VolOsd", "settings.json");
+        public static string FilePath => AppPaths.SettingsFile;
 
         public static AppSettings Load()
         {
+            AppPaths.MigrateLegacyDataIfNeeded();
+
             try
             {
                 if (File.Exists(FilePath))
@@ -76,8 +77,7 @@ namespace VolOsd
 
         public void Save()
         {
-            var dir = Path.GetDirectoryName(FilePath)!;
-            Directory.CreateDirectory(dir);
+            Directory.CreateDirectory(AppPaths.DataDirectory);
             var json = JsonSerializer.Serialize(this, JsonOptions);
             File.WriteAllText(FilePath, json);
         }

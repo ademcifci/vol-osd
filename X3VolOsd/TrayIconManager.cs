@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public sealed class TrayIconManager : IDisposable
     {

@@ -4,7 +4,7 @@ using System.Threading;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public readonly record struct VolumeChange(string DeviceId, string DeviceName, float Volume, bool Muted, bool IsDefault);
 

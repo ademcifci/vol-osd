@@ -1,9 +1,9 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using VolOsd;
+using X3VolOsd;
 
-namespace VolOsd.Tests
+namespace X3VolOsd.Tests
 {
     /// <summary>
     /// Regression tests for two real, hard-to-notice bugs in the generated app icon: a

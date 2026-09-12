@@ -6,7 +6,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     /// <summary>Draws the app icon in-process so the app ships without an external .ico asset.</summary>
     public static class IconFactory
@@ -34,7 +34,7 @@ namespace VolOsd
         /// <summary>
         /// Writes a proper multi-resolution .ico so the compiled exe itself - not just the tray icon
         /// drawn at runtime - shows the app icon in Explorer, the taskbar, Alt-Tab, and shortcuts. Not
-        /// called at runtime; this is how app.ico (referenced by VolOsd.csproj's ApplicationIcon and
+        /// called at runtime; this is how app.ico (referenced by X3VolOsd.csproj's ApplicationIcon and
         /// the installer's SetupIconFile) was generated. Re-run it if the icon design ever changes.
         ///
         /// PNG-compressed frames are only reliably decoded by System.Drawing/shell icon loaders at

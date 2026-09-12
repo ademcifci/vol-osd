@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     /// <summary>
     /// Identifies volume events from the X3 hardware knob. The driver keeps sibling endpoints on the

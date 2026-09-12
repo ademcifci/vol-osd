@@ -1,4 +1,4 @@
-<Window x:Class="VolOsd.SettingsWindow"
+<Window x:Class="X3VolOsd.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="X3 Vol OSD Settings"

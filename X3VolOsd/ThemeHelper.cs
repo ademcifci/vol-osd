@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Media;
 using Microsoft.Win32;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public static class ThemeHelper
     {

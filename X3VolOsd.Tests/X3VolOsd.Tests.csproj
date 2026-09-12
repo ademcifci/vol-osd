@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>X3VolOsd.Tests</RootNamespace>
+    <AssemblyName>X3VolOsd.Tests</AssemblyName>
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
@@ -23,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VolOsd\VolOsd.csproj" />
+    <ProjectReference Include="..\X3VolOsd\X3VolOsd.csproj" />
   </ItemGroup>
 
 </Project>

@@ -17,26 +17,29 @@ checks for it and points you at the download if it's missing.
 
 Two options, both framework-dependent:
 
-- **`VolOsd-<version>-setup.exe`** — installs per-user (no admin prompt) to
-  `%LocalAppData%\Programs\VolOsd`, adds a Start Menu entry and an uninstaller.
-- **`VolOsd-<version>-portable.exe`** — a single ~760 KB exe, run it from anywhere. Settings live in
-  `%AppData%\VolOsd`.
+- **`X3VolOsd-<version>-setup.exe`** — installs per-user (no admin prompt) to
+  `%LocalAppData%\Programs\X3VolOsd`, adds a Start Menu entry and an uninstaller.
+- **`X3VolOsd-<version>-portable.exe`** — a single exe, run it from anywhere. Settings live in
+  `%AppData%\X3VolOsd`.
 
 If the .NET runtime is missing, the installer offers to open the download page.
 
 Autostart records the exe's absolute path. If you move the portable exe, the app repoints the entry
 the next time you run it.
 
+Upgrading from the old **Vol OSD** app: settings and the debug log are copied automatically from
+`%AppData%\VolOsd` on first run if the new folder does not exist yet.
+
 ## Run in development
 
 ```
-dotnet run --project VolOsd
+dotnet run --project X3VolOsd
 ```
 
 ## Tests
 
 ```
-dotnet test VolOsd.Tests
+dotnet test X3VolOsd.Tests
 ```
 
 ## Build a release
@@ -46,7 +49,7 @@ dotnet test VolOsd.Tests
 ```
 
 Produces both artifacts in `dist\`. Requires [Inno Setup 6](https://jrsoftware.org/isinfo.php) at its
-default location. The version comes from `<Version>` in `VolOsd.csproj`.
+default location. The version comes from `<Version>` in `X3VolOsd.csproj`.
 
 ## Usage
 
@@ -55,7 +58,7 @@ default location. The version comes from `<Version>` in `VolOsd.csproj`.
   Save Diagnostics Report, Exit).
 - Settings: overlay position, size, display duration, theme, colours, and which X3 endpoint is the
   knob device.
-- Settings are stored at `%AppData%\VolOsd\settings.json`.
+- Settings are stored at `%AppData%\X3VolOsd\settings.json`.
 
 On first run, if no knob device is configured, the app auto-selects `SPDIF Out (Sound Blaster X3)` if
 present (otherwise any X3 endpoint). The overlay **only** appears when that card's volume changes —

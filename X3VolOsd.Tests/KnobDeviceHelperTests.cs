@@ -1,6 +1,6 @@
-using VolOsd;
+using X3VolOsd;
 
-namespace VolOsd.Tests
+namespace X3VolOsd.Tests
 {
     public class KnobDeviceHelperTests
     {

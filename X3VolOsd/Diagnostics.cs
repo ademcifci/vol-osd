@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     /// <summary>
     /// Low-volume lifecycle/error logging. Deliberately NOT called per volume change: that path runs
@@ -10,8 +10,7 @@ namespace VolOsd
     /// </summary>
     public static class Diagnostics
     {
-        public static readonly string LogPath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "VolOsd", "debug.log");
+        public static readonly string LogPath = AppPaths.LogFile;
 
         private static readonly object Lock = new();
         private const long MaxBytes = 256 * 1024;
@@ -25,7 +24,8 @@ namespace VolOsd
                 {
                     if (!_directoryReady)
                     {
-                        Directory.CreateDirectory(Path.GetDirectoryName(LogPath)!);
+                        AppPaths.MigrateLegacyDataIfNeeded();
+                        Directory.CreateDirectory(AppPaths.DataDirectory);
                         _directoryReady = true;
                     }
 

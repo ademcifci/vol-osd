@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public static class DarkTitleBar
     {

@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace VolOsd
+namespace X3VolOsd
 {
     public partial class SettingsWindow : Window
     {
