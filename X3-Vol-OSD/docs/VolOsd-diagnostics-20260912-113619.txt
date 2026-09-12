@@ -1,0 +1,1095 @@
+Vol OSD diagnostics report
+Generated: 2026-09-12 11:36:19 +10:00
+
+--- Version ---
+App version: 1.1.0.0
+OS: Microsoft Windows 10.0.26200
+.NET runtime: .NET 8.0.30
+
+--- Audio devices (current) ---
+  Digital Audio (S/PDIF) (High Definition Audio Device)    4.0%
+  Speakers (Sound Blaster X3)                         4.0%
+  Speakers (Jabra EVOLVE 20 SE)                      25.9%
+  SPDIF Out (Sound Blaster X3)                        4.0%  [KNOB]
+  FxSound Speakers (FxSound Audio Enhancer)           4.0%  [DEFAULT]
+
+--- Settings ---
+{
+  "Position": "BottomCenter",
+  "Scale": 0.8,
+  "DisplayDurationMs": 3250,
+  "Theme": "Auto",
+  "StartWithWindows": true,
+  "DarkBackgroundColorHex": "#1E1E1E",
+  "DarkForegroundColorHex": "#FFFFFF",
+  "DarkBarColorHex": "accent",
+  "KnobDeviceId": "{0.0.0.00000000}.{ce2fb0e7-443b-4671-b3ab-3c71bcab6d3f}",
+  "LightBackgroundColorHex": "#E4E4E6",
+  "LightForegroundColorHex": "#1A1A1A",
+  "LightBarColorHex": "accent"
+}
+
+--- Log ---
+16:01:48.738  Startup begin
+16:01:48.868  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+16:01:48.902  Watching render device: Speakers (Sound Blaster X3)
+16:01:48.928  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+16:01:48.965  Watching render device: SPDIF Out (Sound Blaster X3)
+16:01:48.985  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+16:01:48.987  KnobRelay: baseline for knob device is 2.2%
+16:01:49.038  Startup complete
+16:04:17.920  KnobRelay: SAFETY TRIP - moved 51 points in under a second. Disabled for the rest of this session.
+16:47:18.525  KnobRelay: baseline for knob device is 8.0%
+16:47:18.531  KnobRelay: ignoring implausible step 48.0 points
+16:47:18.531  KnobRelay: ignoring implausible step 48.0 points
+16:47:18.532  KnobRelay: ignoring implausible step -98.0 points
+16:47:18.533  KnobRelay: ignoring implausible step 59.0 points
+16:47:18.535  KnobRelay: baseline for knob device is 8.0%
+16:47:18.535  KnobRelay: baseline for knob device is 8.0%
+16:47:18.536  KnobRelay: baseline for knob device is 8.0%
+16:47:18.537  KnobRelay: baseline for knob device is 8.0%
+16:47:18.537  KnobRelay: baseline for knob device is 8.0%
+16:47:18.539  KnobRelay: baseline for knob device is 8.0%
+16:47:18.540  KnobRelay: baseline for knob device is 8.0%
+16:47:18.540  KnobRelay: SAFETY TRIP - moved 52 points in under a second. Disabled for the rest of this session.
+16:47:18.541  KnobRelay: baseline for knob device is 8.0%
+16:47:18.541  KnobRelay: ignoring implausible step 82.0 points
+20:50:25.566  KnobRelay: baseline for knob device is 8.0%
+20:50:25.575  KnobRelay: baseline for knob device is 8.0%
+20:50:25.576  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+20:50:25.577  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+20:50:25.577  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+20:50:25.578  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+20:50:25.579  KnobRelay: baseline for knob device is 8.0%
+20:50:25.579  KnobRelay: baseline for knob device is 8.0%
+20:50:25.581  KnobRelay: baseline for knob device is 8.0%
+20:50:25.581  KnobRelay: baseline for knob device is 8.0%
+20:50:25.582  KnobRelay: baseline for knob device is 8.0%
+20:50:25.582  KnobRelay: baseline for knob device is 8.0%
+20:50:25.582  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+20:50:25.583  KnobRelay: baseline for knob device is 8.0%
+20:50:25.584  KnobRelay: baseline for knob device is 8.0%
+20:50:25.584  KnobRelay: SAFETY TRIP - moved 52 points in under a second. Disabled for the rest of this session.
+20:53:34.266  KnobRelay: baseline for knob device is 8.0%
+20:53:34.274  KnobRelay: baseline for knob device is 8.0%
+20:53:34.274  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+20:53:34.275  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+20:53:34.276  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+20:53:34.277  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+20:53:34.278  KnobRelay: baseline for knob device is 8.0%
+20:53:34.278  KnobRelay: baseline for knob device is 8.0%
+20:53:34.279  KnobRelay: baseline for knob device is 8.0%
+20:53:34.279  KnobRelay: baseline for knob device is 8.0%
+20:53:34.280  KnobRelay: baseline for knob device is 8.0%
+20:53:34.280  KnobRelay: baseline for knob device is 8.0%
+20:53:34.281  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+20:53:34.281  KnobRelay: baseline for knob device is 8.0%
+20:53:34.282  KnobRelay: baseline for knob device is 8.0%
+20:53:34.282  KnobRelay: SAFETY TRIP - moved 52 points in under a second. Disabled for the rest of this session.
+20:54:14.590  Startup begin
+20:54:14.732  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+20:54:14.765  Watching render device: Speakers (Sound Blaster X3)
+20:54:14.791  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+20:54:14.828  Watching render device: SPDIF Out (Sound Blaster X3)
+20:54:14.851  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+20:54:14.853  KnobRelay: baseline for knob device is 4.0%
+20:54:14.912  Startup complete
+23:30:06.769  KnobRelay: SAFETY TRIP - moved 54 points in under a second. Disabled for the rest of this session.
+00:02:47.288  KnobRelay: baseline for knob device is 8.0%
+00:02:47.302  KnobRelay: baseline for knob device is 8.0%
+00:02:47.303  KnobRelay: baseline for knob device is 8.0%
+00:02:47.304  KnobRelay: baseline for knob device is 8.0%
+00:02:47.305  KnobRelay: baseline for knob device is 8.0%
+00:02:47.306  KnobRelay: baseline for knob device is 8.0%
+00:02:47.306  KnobRelay: baseline for knob device is 8.0%
+00:02:47.307  KnobRelay: baseline for knob device is 8.0%
+00:02:47.307  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:02:47.308  KnobRelay: baseline for knob device is 8.0%
+00:02:47.309  KnobRelay: baseline for knob device is 8.0%
+00:05:31.460  KnobRelay: baseline for knob device is 8.0%
+00:05:31.466  KnobRelay: relayed +2.0 to default, now 52.0%
+00:05:31.468  KnobRelay: relayed +2.0 to default, now 54.0%
+00:05:31.469  KnobRelay: baseline for knob device is 8.0%
+00:05:31.470  KnobRelay: relayed -6.0 to default, now 44.0%
+00:05:31.470  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:05:31.471  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:05:31.472  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:05:31.472  KnobRelay: relayed -1.0 to default, now 43.0%
+00:05:31.473  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:05:31.474  KnobRelay: baseline for knob device is 8.0%
+00:05:31.474  KnobRelay: baseline for knob device is 8.0%
+00:05:31.475  KnobRelay: baseline for knob device is 8.0%
+00:05:31.475  KnobRelay: baseline for knob device is 8.0%
+00:05:31.476  KnobRelay: baseline for knob device is 8.0%
+00:05:31.476  KnobRelay: relayed +2.0 to default, now 52.0%
+00:05:31.477  KnobRelay: relayed -2.0 to default, now 50.0%
+00:05:31.477  KnobRelay: relayed -2.0 to default, now 48.0%
+00:05:31.477  KnobRelay: baseline for knob device is 8.0%
+00:05:31.478  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:05:31.478  KnobRelay: relayed +2.0 to default, now 52.0%
+00:05:31.479  KnobRelay: baseline for knob device is 8.0%
+00:05:31.479  KnobRelay: relayed +2.0 to default, now 52.0%
+00:05:31.480  KnobRelay: baseline for knob device is 8.0%
+00:05:31.480  KnobRelay: relayed +2.0 to default, now 52.0%
+00:05:31.481  KnobRelay: relayed +2.0 to default, now 54.0%
+00:05:31.481  KnobRelay: relayed +2.0 to default, now 56.0%
+00:05:31.482  KnobRelay: relayed +2.0 to default, now 58.0%
+00:05:31.482  KnobRelay: relayed +2.0 to default, now 60.0%
+00:05:31.483  KnobRelay: relayed +2.0 to default, now 62.0%
+00:05:31.483  KnobRelay: relayed +2.0 to default, now 64.0%
+00:05:31.483  KnobRelay: relayed +2.0 to default, now 66.0%
+00:05:31.484  KnobRelay: relayed +2.0 to default, now 68.0%
+00:05:31.484  KnobRelay: relayed +2.0 to default, now 70.0%
+00:05:31.485  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:06:03.626  KnobRelay: baseline for knob device is 8.0%
+00:06:03.632  KnobRelay: relayed +2.0 to default, now 52.0%
+00:06:03.634  KnobRelay: relayed +2.0 to default, now 54.0%
+00:06:03.636  KnobRelay: baseline for knob device is 8.0%
+00:06:03.636  KnobRelay: relayed -6.0 to default, now 44.0%
+00:06:03.637  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:06:03.637  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:06:03.637  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:06:03.638  KnobRelay: relayed -1.0 to default, now 43.0%
+00:06:03.638  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:06:03.639  KnobRelay: baseline for knob device is 8.0%
+00:06:03.640  KnobRelay: baseline for knob device is 8.0%
+00:06:03.641  KnobRelay: baseline for knob device is 8.0%
+00:06:03.641  KnobRelay: relayed +2.0 to default, now 52.0%
+00:06:03.642  KnobRelay: relayed +2.0 to default, now 54.0%
+00:06:03.642  KnobRelay: relayed +2.0 to default, now 56.0%
+00:06:03.642  KnobRelay: relayed +2.0 to default, now 58.0%
+00:06:03.643  KnobRelay: relayed +2.0 to default, now 60.0%
+00:06:03.643  KnobRelay: relayed +2.0 to default, now 62.0%
+00:06:03.644  KnobRelay: relayed +2.0 to default, now 64.0%
+00:06:03.644  KnobRelay: relayed +2.0 to default, now 66.0%
+00:06:03.645  KnobRelay: relayed +2.0 to default, now 68.0%
+00:06:03.645  KnobRelay: relayed +2.0 to default, now 70.0%
+00:06:03.646  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:06:03.647  KnobRelay: baseline for knob device is 8.0%
+00:06:03.647  KnobRelay: baseline for knob device is 8.0%
+00:06:03.647  KnobRelay: baseline for knob device is 8.0%
+00:06:03.648  KnobRelay: relayed +2.0 to default, now 52.0%
+00:06:03.648  KnobRelay: relayed -2.0 to default, now 50.0%
+00:06:03.649  KnobRelay: relayed -2.0 to default, now 48.0%
+00:06:03.650  KnobRelay: baseline for knob device is 8.0%
+00:06:03.650  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:06:03.650  KnobRelay: relayed +2.0 to default, now 52.0%
+00:06:03.651  KnobRelay: baseline for knob device is 8.0%
+00:06:03.651  KnobRelay: relayed +2.0 to default, now 52.0%
+00:06:03.652  KnobRelay: baseline for knob device is 8.0%
+00:06:03.652  KnobRelay: relayed +2.0 to default, now 52.0%
+00:06:03.653  KnobRelay: relayed +2.0 to default, now 54.0%
+00:06:03.653  KnobRelay: relayed +2.0 to default, now 56.0%
+00:06:03.654  KnobRelay: relayed +2.0 to default, now 58.0%
+00:06:03.654  KnobRelay: relayed +2.0 to default, now 60.0%
+00:06:03.655  KnobRelay: relayed +2.0 to default, now 62.0%
+00:06:03.655  KnobRelay: relayed +2.0 to default, now 64.0%
+00:06:03.656  KnobRelay: relayed +2.0 to default, now 66.0%
+00:06:03.656  KnobRelay: relayed +2.0 to default, now 68.0%
+00:06:03.657  KnobRelay: relayed +2.0 to default, now 70.0%
+00:06:03.658  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:08:21.267  KnobRelay: baseline for knob device is 8.0%
+00:08:21.272  KnobRelay: relayed +2.0 to default, now 52.0%
+00:08:21.274  KnobRelay: relayed +2.0 to default, now 54.0%
+00:08:21.276  KnobRelay: baseline for knob device is 8.0%
+00:08:21.276  KnobRelay: relayed -6.0 to default, now 44.0%
+00:08:21.277  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:08:21.278  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:08:21.278  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:08:21.279  KnobRelay: relayed -1.0 to default, now 43.0%
+00:08:21.279  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:08:21.280  KnobRelay: baseline for knob device is 8.0%
+00:08:21.281  KnobRelay: baseline for knob device is 8.0%
+00:08:21.282  KnobRelay: baseline for knob device is 8.0%
+00:08:21.282  KnobRelay: relayed +2.0 to default, now 52.0%
+00:08:21.282  KnobRelay: relayed +2.0 to default, now 54.0%
+00:08:21.283  KnobRelay: relayed +2.0 to default, now 56.0%
+00:08:21.283  KnobRelay: relayed +2.0 to default, now 58.0%
+00:08:21.284  KnobRelay: relayed +2.0 to default, now 60.0%
+00:08:21.284  KnobRelay: relayed +2.0 to default, now 62.0%
+00:08:21.285  KnobRelay: relayed +2.0 to default, now 64.0%
+00:08:21.285  KnobRelay: relayed +2.0 to default, now 66.0%
+00:08:21.286  KnobRelay: relayed +2.0 to default, now 68.0%
+00:08:21.286  KnobRelay: relayed +2.0 to default, now 70.0%
+00:08:21.287  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:08:21.287  KnobRelay: baseline for knob device is 8.0%
+00:08:21.288  KnobRelay: baseline for knob device is 8.0%
+00:08:21.288  KnobRelay: baseline for knob device is 8.0%
+00:08:21.289  KnobRelay: relayed +2.0 to default, now 52.0%
+00:08:21.289  KnobRelay: relayed -2.0 to default, now 50.0%
+00:08:21.290  KnobRelay: relayed -2.0 to default, now 48.0%
+00:08:21.291  KnobRelay: baseline for knob device is 8.0%
+00:08:21.291  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:08:21.292  KnobRelay: relayed +2.0 to default, now 52.0%
+00:08:21.292  KnobRelay: baseline for knob device is 8.0%
+00:08:21.293  KnobRelay: relayed +2.0 to default, now 52.0%
+00:08:21.293  KnobRelay: baseline for knob device is 8.0%
+00:08:21.294  KnobRelay: relayed +2.0 to default, now 52.0%
+00:08:21.294  KnobRelay: relayed +2.0 to default, now 54.0%
+00:08:21.295  KnobRelay: relayed +2.0 to default, now 56.0%
+00:08:21.295  KnobRelay: relayed +2.0 to default, now 58.0%
+00:08:21.296  KnobRelay: relayed +2.0 to default, now 60.0%
+00:08:21.296  KnobRelay: relayed +2.0 to default, now 62.0%
+00:08:21.296  KnobRelay: relayed +2.0 to default, now 64.0%
+00:08:21.297  KnobRelay: relayed +2.0 to default, now 66.0%
+00:08:21.297  KnobRelay: relayed +2.0 to default, now 68.0%
+00:08:21.298  KnobRelay: relayed +2.0 to default, now 70.0%
+00:08:21.298  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:08:46.825  Startup begin
+00:08:46.970  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+00:08:47.003  Watching render device: Speakers (Sound Blaster X3)
+00:08:47.030  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+00:08:47.069  Watching render device: SPDIF Out (Sound Blaster X3)
+00:08:47.090  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+00:08:47.092  KnobRelay: baseline for knob device is 6.1%
+00:08:47.155  Startup complete
+00:09:34.196  KnobRelay: relayed -2.0 to default, now 2.0%
+00:09:35.423  KnobRelay: relayed +2.0 to default, now 8.1%
+00:09:36.151  KnobRelay: relayed +4.0 to default, now 12.0%
+00:09:36.240  KnobRelay: relayed +4.0 to default, now 18.0%
+00:09:36.901  KnobRelay: relayed +4.0 to default, now 22.0%
+00:09:37.098  KnobRelay: relayed +2.1 to default, now 22.2%
+00:09:37.103  KnobRelay: relayed +4.0 to default, now 26.1%
+00:09:37.651  KnobRelay: relayed +4.0 to default, now 30.2%
+00:09:38.401  KnobRelay: relayed +4.0 to default, now 34.2%
+00:09:39.151  KnobRelay: relayed +3.8 to default, now 38.0%
+00:09:39.901  KnobRelay: relayed +2.2 to default, now 40.3%
+00:09:40.651  KnobRelay: relayed +4.0 to default, now 44.3%
+00:09:41.401  KnobRelay: relayed +3.8 to default, now 48.1%
+00:09:42.151  KnobRelay: relayed +2.2 to default, now 50.3%
+00:09:42.901  KnobRelay: relayed +4.0 to default, now 54.3%
+00:09:43.651  KnobRelay: relayed +4.0 to default, now 58.3%
+00:09:44.401  KnobRelay: relayed +3.9 to default, now 62.1%
+00:09:45.151  KnobRelay: relayed +4.1 to default, now 66.2%
+00:09:45.244  KnobRelay: relayed -2.1 to default, now 60.0%
+00:09:45.600  KnobRelay: relayed -4.0 to default, now 54.1%
+00:09:45.683  KnobRelay: relayed -5.9 to default, now 46.3%
+00:09:45.737  KnobRelay: relayed -8.0 to default, now 36.2%
+00:09:47.842  KnobRelay: relayed -10.1 to default, now 24.0%
+00:09:47.869  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:17:23.386  KnobRelay: baseline for knob device is 8.0%
+00:17:23.391  KnobRelay: relayed +2.0 to default, now 52.0%
+00:17:23.394  KnobRelay: relayed +2.0 to default, now 54.0%
+00:17:23.395  KnobRelay: baseline for knob device is 8.0%
+00:17:23.395  KnobRelay: relayed -6.0 to default, now 44.0%
+00:17:23.396  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:17:23.397  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:17:23.397  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:17:23.398  KnobRelay: relayed -1.0 to default, now 43.0%
+00:17:23.398  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:17:23.399  KnobRelay: baseline for knob device is 8.0%
+00:17:23.400  KnobRelay: baseline for knob device is 8.0%
+00:17:23.401  KnobRelay: baseline for knob device is 8.0%
+00:17:23.401  KnobRelay: relayed +2.0 to default, now 52.0%
+00:17:23.402  KnobRelay: relayed +2.0 to default, now 54.0%
+00:17:23.403  KnobRelay: relayed +2.0 to default, now 56.0%
+00:17:23.403  KnobRelay: relayed +2.0 to default, now 58.0%
+00:17:23.404  KnobRelay: relayed +2.0 to default, now 60.0%
+00:17:23.405  KnobRelay: relayed +2.0 to default, now 62.0%
+00:17:23.405  KnobRelay: relayed +2.0 to default, now 64.0%
+00:17:23.406  KnobRelay: relayed +2.0 to default, now 66.0%
+00:17:23.406  KnobRelay: relayed +2.0 to default, now 68.0%
+00:17:23.407  KnobRelay: relayed +2.0 to default, now 70.0%
+00:17:23.408  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:17:23.409  KnobRelay: baseline for knob device is 8.0%
+00:17:23.410  KnobRelay: baseline for knob device is 8.0%
+00:17:23.410  KnobRelay: baseline for knob device is 8.0%
+00:17:23.411  KnobRelay: relayed +2.0 to default, now 52.0%
+00:17:23.411  KnobRelay: relayed -2.0 to default, now 50.0%
+00:17:23.412  KnobRelay: relayed -2.0 to default, now 48.0%
+00:17:23.413  KnobRelay: baseline for knob device is 8.0%
+00:17:23.414  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:17:23.414  KnobRelay: relayed +2.0 to default, now 52.0%
+00:17:23.415  KnobRelay: baseline for knob device is 8.0%
+00:17:23.416  KnobRelay: relayed +2.0 to default, now 52.0%
+00:17:23.416  KnobRelay: baseline for knob device is 8.0%
+00:17:23.417  KnobRelay: relayed +2.0 to default, now 52.0%
+00:17:23.417  KnobRelay: relayed +2.0 to default, now 54.0%
+00:17:23.418  KnobRelay: relayed +2.0 to default, now 56.0%
+00:17:23.418  KnobRelay: relayed +2.0 to default, now 58.0%
+00:17:23.419  KnobRelay: relayed +2.0 to default, now 60.0%
+00:17:23.420  KnobRelay: relayed +2.0 to default, now 62.0%
+00:17:23.420  KnobRelay: relayed +2.0 to default, now 64.0%
+00:17:23.421  KnobRelay: relayed +2.0 to default, now 66.0%
+00:17:23.421  KnobRelay: relayed +2.0 to default, now 68.0%
+00:17:23.422  KnobRelay: relayed +2.0 to default, now 70.0%
+00:17:23.422  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:18:28.742  KnobRelay: baseline for knob device is 8.0%
+00:18:28.748  KnobRelay: relayed +2.0 to default, now 52.0%
+00:18:28.750  KnobRelay: relayed +2.0 to default, now 54.0%
+00:18:28.752  KnobRelay: baseline for knob device is 8.0%
+00:18:28.752  KnobRelay: relayed -6.0 to default, now 44.0%
+00:18:28.753  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:18:28.754  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:18:28.754  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:18:28.755  KnobRelay: relayed -1.0 to default, now 43.0%
+00:18:28.756  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:18:28.757  KnobRelay: baseline for knob device is 8.0%
+00:18:28.758  KnobRelay: baseline for knob device is 8.0%
+00:18:28.759  KnobRelay: baseline for knob device is 8.0%
+00:18:28.759  KnobRelay: relayed +2.0 to default, now 52.0%
+00:18:28.759  KnobRelay: relayed +2.0 to default, now 54.0%
+00:18:28.760  KnobRelay: relayed +2.0 to default, now 56.0%
+00:18:28.761  KnobRelay: relayed +2.0 to default, now 58.0%
+00:18:28.761  KnobRelay: relayed +2.0 to default, now 60.0%
+00:18:28.762  KnobRelay: relayed +2.0 to default, now 62.0%
+00:18:28.763  KnobRelay: relayed +2.0 to default, now 64.0%
+00:18:28.763  KnobRelay: relayed +2.0 to default, now 66.0%
+00:18:28.764  KnobRelay: relayed +2.0 to default, now 68.0%
+00:18:28.765  KnobRelay: relayed +2.0 to default, now 70.0%
+00:18:28.765  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:18:28.766  KnobRelay: baseline for knob device is 8.0%
+00:18:28.767  KnobRelay: relayed +7.0 to default, now 57.0%
+00:18:28.768  KnobRelay: relayed +7.0 to default, now 64.0%
+00:18:28.768  KnobRelay: relayed +7.0 to default, now 71.0%
+00:18:28.769  KnobRelay: relayed +7.0 to default, now 78.0%
+00:18:28.769  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+00:18:28.770  KnobRelay: baseline for knob device is 8.0%
+00:18:28.771  KnobRelay: baseline for knob device is 8.0%
+00:18:28.772  KnobRelay: baseline for knob device is 8.0%
+00:18:28.772  KnobRelay: relayed +2.0 to default, now 52.0%
+00:18:28.773  KnobRelay: relayed -2.0 to default, now 50.0%
+00:18:28.774  KnobRelay: relayed -2.0 to default, now 48.0%
+00:18:28.775  KnobRelay: baseline for knob device is 8.0%
+00:18:28.775  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:18:28.776  KnobRelay: relayed +2.0 to default, now 52.0%
+00:18:28.777  KnobRelay: baseline for knob device is 8.0%
+00:18:28.777  KnobRelay: relayed +2.0 to default, now 52.0%
+00:18:28.778  KnobRelay: baseline for knob device is 8.0%
+00:18:28.778  KnobRelay: relayed +2.0 to default, now 52.0%
+00:18:28.779  KnobRelay: relayed +2.0 to default, now 54.0%
+00:18:28.780  KnobRelay: relayed +2.0 to default, now 56.0%
+00:18:28.780  KnobRelay: relayed +2.0 to default, now 58.0%
+00:18:28.781  KnobRelay: relayed +2.0 to default, now 60.0%
+00:18:28.781  KnobRelay: relayed +2.0 to default, now 62.0%
+00:18:28.782  KnobRelay: relayed +2.0 to default, now 64.0%
+00:18:28.783  KnobRelay: relayed +2.0 to default, now 66.0%
+00:18:28.783  KnobRelay: relayed +2.0 to default, now 68.0%
+00:18:28.784  KnobRelay: relayed +2.0 to default, now 70.0%
+00:18:28.785  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:22:22.935  KnobRelay: baseline for knob device is 8.0%
+00:22:22.940  KnobRelay: relayed +2.0 to default, now 52.0%
+00:22:22.943  KnobRelay: relayed +2.0 to default, now 54.0%
+00:22:22.944  KnobRelay: baseline for knob device is 8.0%
+00:22:22.944  KnobRelay: relayed -6.0 to default, now 44.0%
+00:22:22.945  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:22:22.946  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:22:22.947  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:22:22.948  KnobRelay: relayed -1.0 to default, now 43.0%
+00:22:22.949  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:22:22.950  KnobRelay: baseline for knob device is 8.0%
+00:22:22.950  KnobRelay: baseline for knob device is 8.0%
+00:22:22.951  KnobRelay: baseline for knob device is 8.0%
+00:22:22.952  KnobRelay: relayed +2.0 to default, now 52.0%
+00:22:22.952  KnobRelay: relayed +2.0 to default, now 54.0%
+00:22:22.953  KnobRelay: relayed +2.0 to default, now 56.0%
+00:22:22.954  KnobRelay: relayed +2.0 to default, now 58.0%
+00:22:22.954  KnobRelay: relayed +2.0 to default, now 60.0%
+00:22:22.955  KnobRelay: relayed +2.0 to default, now 62.0%
+00:22:22.956  KnobRelay: relayed +2.0 to default, now 64.0%
+00:22:22.956  KnobRelay: relayed +2.0 to default, now 66.0%
+00:22:22.957  KnobRelay: relayed +2.0 to default, now 68.0%
+00:22:22.958  KnobRelay: relayed +2.0 to default, now 70.0%
+00:22:22.958  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:22:22.959  KnobRelay: baseline for knob device is 8.0%
+00:22:22.959  KnobRelay: relayed +7.0 to default, now 57.0%
+00:22:22.960  KnobRelay: relayed +7.0 to default, now 64.0%
+00:22:22.961  KnobRelay: relayed +7.0 to default, now 71.0%
+00:22:22.961  KnobRelay: relayed +7.0 to default, now 78.0%
+00:22:22.962  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+00:22:22.963  KnobRelay: baseline for knob device is 8.0%
+00:22:22.963  KnobRelay: baseline for knob device is 8.0%
+00:22:22.964  KnobRelay: baseline for knob device is 8.0%
+00:22:22.965  KnobRelay: relayed +2.0 to default, now 52.0%
+00:22:22.965  KnobRelay: relayed -2.0 to default, now 50.0%
+00:22:22.966  KnobRelay: relayed -2.0 to default, now 48.0%
+00:22:22.967  KnobRelay: baseline for knob device is 8.0%
+00:22:22.967  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:22:22.968  KnobRelay: relayed +2.0 to default, now 52.0%
+00:22:22.968  KnobRelay: baseline for knob device is 8.0%
+00:22:22.969  KnobRelay: relayed +2.0 to default, now 52.0%
+00:22:22.970  KnobRelay: baseline for knob device is 8.0%
+00:22:22.970  KnobRelay: relayed +2.0 to default, now 52.0%
+00:22:22.971  KnobRelay: relayed +2.0 to default, now 54.0%
+00:22:22.971  KnobRelay: relayed +2.0 to default, now 56.0%
+00:22:22.972  KnobRelay: relayed +2.0 to default, now 58.0%
+00:22:22.972  KnobRelay: relayed +2.0 to default, now 60.0%
+00:22:22.973  KnobRelay: relayed +2.0 to default, now 62.0%
+00:22:22.974  KnobRelay: relayed +2.0 to default, now 64.0%
+00:22:22.974  KnobRelay: relayed +2.0 to default, now 66.0%
+00:22:22.975  KnobRelay: relayed +2.0 to default, now 68.0%
+00:22:22.976  KnobRelay: relayed +2.0 to default, now 70.0%
+00:22:22.976  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:22:54.358  Startup begin
+00:22:54.515  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+00:22:54.550  Watching render device: Speakers (Sound Blaster X3)
+00:22:54.576  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+00:22:54.613  Watching render device: SPDIF Out (Sound Blaster X3)
+00:22:54.634  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+00:22:54.636  KnobRelay: baseline for knob device is 6.1%
+00:22:54.695  Startup complete
+00:23:19.849  KnobRelay: relayed +2.0 to default, now 10.0%
+00:23:20.423  KnobRelay: relayed +2.0 to default, now 12.0%
+00:23:21.173  KnobRelay: relayed +2.0 to default, now 14.1%
+00:23:23.256  KnobRelay: relayed -2.0 to default, now 8.0%
+00:23:23.688  KnobRelay: relayed -4.0 to default, now 2.1%
+00:23:24.423  KnobRelay: relayed -3.9 to default, now 0.0%
+00:23:26.450  KnobRelay: relayed +2.2 to default, now 4.4%
+00:23:27.173  KnobRelay: relayed +3.9 to default, now 8.2%
+00:23:27.924  KnobRelay: relayed +4.0 to default, now 12.2%
+00:23:28.673  KnobRelay: relayed +4.0 to default, now 16.2%
+00:23:29.424  KnobRelay: relayed +4.0 to default, now 20.2%
+00:23:30.173  KnobRelay: relayed +4.0 to default, now 24.3%
+00:23:30.923  KnobRelay: relayed +4.0 to default, now 28.3%
+00:23:31.673  KnobRelay: relayed +3.9 to default, now 32.2%
+00:23:32.424  KnobRelay: relayed +4.1 to default, now 36.3%
+00:23:33.174  KnobRelay: relayed +4.1 to default, now 40.4%
+00:23:33.923  KnobRelay: relayed +4.0 to default, now 44.4%
+00:23:34.674  KnobRelay: relayed +3.8 to default, now 48.2%
+00:23:35.423  KnobRelay: relayed +2.2 to default, now 50.4%
+00:23:35.431  KnobRelay: SAFETY TRIP - moved 30 points over a sustained few seconds. Disabled for the rest of this session.
+00:40:59.265  Startup begin
+00:40:59.407  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+00:40:59.441  Watching render device: Speakers (Sound Blaster X3)
+00:40:59.467  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+00:40:59.505  Watching render device: SPDIF Out (Sound Blaster X3)
+00:40:59.526  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+00:40:59.528  KnobRelay: baseline for knob device is 2.2%
+00:40:59.579  Startup complete
+00:41:20.980  KnobRelay: relayed -2.2 to default, now 30.0%
+00:41:26.841  KnobRelay: relayed +2.2 to default, now 32.2%
+00:41:26.950  KnobRelay: relayed +1.8 to default, now 34.0%
+00:41:27.532  KnobRelay: relayed -1.8 to default, now 32.2%
+00:41:27.653  KnobRelay: relayed -2.2 to default, now 30.0%
+00:41:33.600  KnobRelay: relayed +2.2 to default, now 32.2%
+00:41:33.839  KnobRelay: relayed +1.8 to default, now 34.0%
+00:41:34.241  KnobRelay: relayed +2.0 to default, now 36.0%
+00:41:34.422  KnobRelay: relayed +2.0 to default, now 38.0%
+00:41:34.859  KnobRelay: relayed +2.0 to default, now 40.0%
+00:41:35.700  KnobRelay: relayed +2.0 to default, now 42.0%
+00:41:36.248  KnobRelay: relayed -2.0 to default, now 40.0%
+00:41:36.489  KnobRelay: relayed -2.0 to default, now 38.0%
+00:41:37.491  KnobRelay: relayed -2.0 to default, now 36.0%
+00:41:37.792  KnobRelay: relayed -2.0 to default, now 34.0%
+00:41:37.857  KnobRelay: relayed -1.8 to default, now 32.2%
+00:41:37.986  KnobRelay: relayed -2.2 to default, now 30.0%
+00:42:37.365  KnobRelay: relayed -2.2 to default, now 13.8%
+00:42:41.585  KnobRelay: relayed +2.2 to default, now 16.0%
+00:42:41.876  KnobRelay: relayed +1.8 to default, now 17.8%
+00:42:42.714  KnobRelay: relayed +2.0 to default, now 19.9%
+00:42:43.135  KnobRelay: relayed +2.0 to default, now 21.8%
+00:42:44.011  KnobRelay: relayed +2.0 to default, now 23.8%
+00:42:44.566  KnobRelay: relayed -2.0 to default, now 21.8%
+00:42:44.732  KnobRelay: relayed -2.0 to default, now 19.9%
+00:42:44.922  KnobRelay: relayed -2.0 to default, now 17.8%
+00:42:45.103  KnobRelay: relayed -1.8 to default, now 16.0%
+00:42:45.427  KnobRelay: relayed -2.2 to default, now 13.8%
+00:43:46.679  KnobRelay: relayed +2.2 to default, now 16.0%
+00:43:46.857  KnobRelay: relayed +1.8 to default, now 17.8%
+00:43:47.068  KnobRelay: relayed +2.0 to default, now 19.9%
+00:43:47.587  KnobRelay: relayed +2.0 to default, now 21.8%
+00:43:47.742  KnobRelay: relayed +2.0 to default, now 23.8%
+00:43:48.163  KnobRelay: relayed +2.0 to default, now 25.9%
+00:43:48.534  KnobRelay: relayed -2.0 to default, now 23.8%
+00:43:48.587  KnobRelay: relayed -2.0 to default, now 21.8%
+00:43:48.637  KnobRelay: relayed -2.0 to default, now 19.9%
+00:43:48.675  KnobRelay: relayed -2.0 to default, now 17.8%
+00:43:48.713  KnobRelay: relayed -1.8 to default, now 16.0%
+00:43:48.827  KnobRelay: relayed -2.2 to default, now 13.8%
+00:56:56.942  KnobRelay: baseline for knob device is 8.0%
+00:56:56.948  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.950  KnobRelay: relayed +2.0 to default, now 54.0%
+00:56:56.951  KnobRelay: baseline for knob device is 8.0%
+00:56:56.952  KnobRelay: relayed -6.0 to default, now 44.0%
+00:56:56.953  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:56:56.954  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:56:56.954  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:56:56.955  KnobRelay: relayed -1.0 to default, now 43.0%
+00:56:56.956  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:56:56.957  KnobRelay: baseline for knob device is 8.0%
+00:56:56.957  KnobRelay: baseline for knob device is 8.0%
+00:56:56.959  KnobRelay: baseline for knob device is 8.0%
+00:56:56.959  KnobRelay: relayed +2.0 to default, now 10.0%
+00:56:56.960  KnobRelay: baseline for knob device is 8.0%
+00:56:56.960  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.961  KnobRelay: relayed +2.0 to default, now 54.0%
+00:56:56.961  KnobRelay: relayed +2.0 to default, now 56.0%
+00:56:56.962  KnobRelay: relayed +2.0 to default, now 58.0%
+00:56:56.963  KnobRelay: relayed +2.0 to default, now 60.0%
+00:56:56.964  KnobRelay: relayed +2.0 to default, now 62.0%
+00:56:56.964  KnobRelay: relayed +2.0 to default, now 64.0%
+00:56:56.965  KnobRelay: relayed +2.0 to default, now 66.0%
+00:56:56.966  KnobRelay: relayed +2.0 to default, now 68.0%
+00:56:56.967  KnobRelay: relayed +2.0 to default, now 70.0%
+00:56:56.967  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:56:56.968  KnobRelay: baseline for knob device is 8.0%
+00:56:56.969  KnobRelay: relayed +7.0 to default, now 57.0%
+00:56:56.970  KnobRelay: relayed +7.0 to default, now 64.0%
+00:56:56.970  KnobRelay: relayed +7.0 to default, now 71.0%
+00:56:56.971  KnobRelay: relayed +7.0 to default, now 78.0%
+00:56:56.972  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+00:56:56.972  KnobRelay: baseline for knob device is 8.0%
+00:56:56.973  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.974  KnobRelay: baseline for knob device is 8.0%
+00:56:56.974  KnobRelay: baseline for knob device is 8.0%
+00:56:56.975  KnobRelay: baseline for knob device is 8.0%
+00:56:56.976  KnobRelay: baseline for knob device is 8.0%
+00:56:56.976  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.977  KnobRelay: relayed -2.0 to default, now 50.0%
+00:56:56.978  KnobRelay: relayed -2.0 to default, now 48.0%
+00:56:56.979  KnobRelay: baseline for knob device is 8.0%
+00:56:56.980  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:56:56.980  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.981  KnobRelay: baseline for knob device is 8.0%
+00:56:56.982  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.983  KnobRelay: baseline for knob device is 8.0%
+00:56:56.983  KnobRelay: relayed +2.0 to default, now 52.0%
+00:56:56.984  KnobRelay: relayed +2.0 to default, now 54.0%
+00:56:56.985  KnobRelay: relayed +2.0 to default, now 56.0%
+00:56:56.986  KnobRelay: relayed +2.0 to default, now 58.0%
+00:56:56.986  KnobRelay: relayed +2.0 to default, now 60.0%
+00:56:56.987  KnobRelay: relayed +2.0 to default, now 62.0%
+00:56:56.988  KnobRelay: relayed +2.0 to default, now 64.0%
+00:56:56.988  KnobRelay: relayed +2.0 to default, now 66.0%
+00:56:56.989  KnobRelay: relayed +2.0 to default, now 68.0%
+00:56:56.990  KnobRelay: relayed +2.0 to default, now 70.0%
+00:56:56.991  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:56:56.991  KnobRelay: baseline for knob device is 8.0%
+00:57:20.606  KnobRelay: baseline for knob device is 8.0%
+00:57:20.612  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.615  KnobRelay: relayed +2.0 to default, now 54.0%
+00:57:20.616  KnobRelay: baseline for knob device is 8.0%
+00:57:20.616  KnobRelay: relayed -6.0 to default, now 44.0%
+00:57:20.618  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:57:20.619  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:57:20.620  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:57:20.620  KnobRelay: relayed -1.0 to default, now 43.0%
+00:57:20.621  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:57:20.623  KnobRelay: baseline for knob device is 8.0%
+00:57:20.623  KnobRelay: baseline for knob device is 8.0%
+00:57:20.625  KnobRelay: baseline for knob device is 8.0%
+00:57:20.625  KnobRelay: relayed +2.0 to default, now 10.0%
+00:57:20.626  KnobRelay: baseline for knob device is 8.0%
+00:57:20.627  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.628  KnobRelay: relayed +2.0 to default, now 54.0%
+00:57:20.629  KnobRelay: relayed +2.0 to default, now 56.0%
+00:57:20.630  KnobRelay: relayed +2.0 to default, now 58.0%
+00:57:20.631  KnobRelay: relayed +2.0 to default, now 60.0%
+00:57:20.631  KnobRelay: relayed +2.0 to default, now 62.0%
+00:57:20.632  KnobRelay: relayed +2.0 to default, now 64.0%
+00:57:20.633  KnobRelay: relayed +2.0 to default, now 66.0%
+00:57:20.634  KnobRelay: relayed +2.0 to default, now 68.0%
+00:57:20.635  KnobRelay: relayed +2.0 to default, now 70.0%
+00:57:20.636  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:57:20.637  KnobRelay: baseline for knob device is 8.0%
+00:57:20.637  KnobRelay: relayed +7.0 to default, now 57.0%
+00:57:20.638  KnobRelay: relayed +7.0 to default, now 64.0%
+00:57:20.638  KnobRelay: relayed +7.0 to default, now 71.0%
+00:57:20.639  KnobRelay: relayed +7.0 to default, now 78.0%
+00:57:20.640  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+00:57:20.640  KnobRelay: baseline for knob device is 8.0%
+00:57:20.641  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.642  KnobRelay: baseline for knob device is 8.0%
+00:57:20.642  KnobRelay: baseline for knob device is 8.0%
+00:57:20.643  KnobRelay: baseline for knob device is 8.0%
+00:57:20.644  KnobRelay: baseline for knob device is 8.0%
+00:57:20.644  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.645  KnobRelay: relayed -2.0 to default, now 50.0%
+00:57:20.645  KnobRelay: relayed -2.0 to default, now 48.0%
+00:57:20.646  KnobRelay: baseline for knob device is 8.0%
+00:57:20.647  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:57:20.647  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.648  KnobRelay: baseline for knob device is 8.0%
+00:57:20.649  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.650  KnobRelay: baseline for knob device is 8.0%
+00:57:20.650  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:20.651  KnobRelay: relayed +2.0 to default, now 54.0%
+00:57:20.652  KnobRelay: relayed +2.0 to default, now 56.0%
+00:57:20.653  KnobRelay: relayed +2.0 to default, now 58.0%
+00:57:20.654  KnobRelay: relayed +2.0 to default, now 60.0%
+00:57:20.655  KnobRelay: relayed +2.0 to default, now 62.0%
+00:57:20.655  KnobRelay: relayed +2.0 to default, now 64.0%
+00:57:20.656  KnobRelay: relayed +2.0 to default, now 66.0%
+00:57:20.657  KnobRelay: relayed +2.0 to default, now 68.0%
+00:57:20.658  KnobRelay: relayed +2.0 to default, now 70.0%
+00:57:20.659  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:57:20.660  KnobRelay: baseline for knob device is 8.0%
+00:57:43.516  KnobRelay: baseline for knob device is 8.0%
+00:57:43.521  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.524  KnobRelay: relayed +2.0 to default, now 54.0%
+00:57:43.525  KnobRelay: baseline for knob device is 8.0%
+00:57:43.525  KnobRelay: relayed -6.0 to default, now 44.0%
+00:57:43.526  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+00:57:43.527  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+00:57:43.528  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+00:57:43.529  KnobRelay: relayed -1.0 to default, now 43.0%
+00:57:43.530  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+00:57:43.532  KnobRelay: baseline for knob device is 8.0%
+00:57:43.532  KnobRelay: baseline for knob device is 8.0%
+00:57:43.534  KnobRelay: baseline for knob device is 8.0%
+00:57:43.534  KnobRelay: relayed +2.0 to default, now 10.0%
+00:57:43.535  KnobRelay: baseline for knob device is 8.0%
+00:57:43.536  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.537  KnobRelay: relayed +2.0 to default, now 54.0%
+00:57:43.538  KnobRelay: relayed +2.0 to default, now 56.0%
+00:57:43.539  KnobRelay: relayed +2.0 to default, now 58.0%
+00:57:43.540  KnobRelay: relayed +2.0 to default, now 60.0%
+00:57:43.540  KnobRelay: relayed +2.0 to default, now 62.0%
+00:57:43.541  KnobRelay: relayed +2.0 to default, now 64.0%
+00:57:43.542  KnobRelay: relayed +2.0 to default, now 66.0%
+00:57:43.543  KnobRelay: relayed +2.0 to default, now 68.0%
+00:57:43.544  KnobRelay: relayed +2.0 to default, now 70.0%
+00:57:43.545  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:57:43.546  KnobRelay: baseline for knob device is 8.0%
+00:57:43.546  KnobRelay: relayed +7.0 to default, now 57.0%
+00:57:43.547  KnobRelay: relayed +7.0 to default, now 64.0%
+00:57:43.547  KnobRelay: relayed +7.0 to default, now 71.0%
+00:57:43.548  KnobRelay: relayed +7.0 to default, now 78.0%
+00:57:43.549  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+00:57:43.550  KnobRelay: baseline for knob device is 8.0%
+00:57:43.550  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.551  KnobRelay: baseline for knob device is 8.0%
+00:57:43.552  KnobRelay: baseline for knob device is 8.0%
+00:57:43.552  KnobRelay: baseline for knob device is 8.0%
+00:57:43.553  KnobRelay: baseline for knob device is 8.0%
+00:57:43.554  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.555  KnobRelay: relayed -2.0 to default, now 50.0%
+00:57:43.555  KnobRelay: relayed -2.0 to default, now 48.0%
+00:57:43.556  KnobRelay: baseline for knob device is 8.0%
+00:57:43.557  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+00:57:43.557  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.569  KnobRelay: baseline for knob device is 8.0%
+00:57:43.569  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.570  KnobRelay: baseline for knob device is 8.0%
+00:57:43.571  KnobRelay: relayed +2.0 to default, now 52.0%
+00:57:43.571  KnobRelay: relayed +2.0 to default, now 54.0%
+00:57:43.572  KnobRelay: relayed +2.0 to default, now 56.0%
+00:57:43.573  KnobRelay: relayed +2.0 to default, now 58.0%
+00:57:43.573  KnobRelay: relayed +2.0 to default, now 60.0%
+00:57:43.574  KnobRelay: relayed +2.0 to default, now 62.0%
+00:57:43.575  KnobRelay: relayed +2.0 to default, now 64.0%
+00:57:43.575  KnobRelay: relayed +2.0 to default, now 66.0%
+00:57:43.576  KnobRelay: relayed +2.0 to default, now 68.0%
+00:57:43.577  KnobRelay: relayed +2.0 to default, now 70.0%
+00:57:43.577  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+00:57:43.578  KnobRelay: baseline for knob device is 8.0%
+01:12:30.711  KnobRelay: baseline for knob device is 8.0%
+01:12:30.717  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.720  KnobRelay: relayed +2.0 to default, now 54.0%
+01:12:30.722  KnobRelay: baseline for knob device is 8.0%
+01:12:30.722  KnobRelay: relayed -6.0 to default, now 44.0%
+01:12:30.723  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+01:12:30.724  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+01:12:30.724  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+01:12:30.725  KnobRelay: relayed -1.0 to default, now 43.0%
+01:12:30.726  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+01:12:30.727  KnobRelay: baseline for knob device is 8.0%
+01:12:30.727  KnobRelay: baseline for knob device is 8.0%
+01:12:30.729  KnobRelay: baseline for knob device is 8.0%
+01:12:30.729  KnobRelay: relayed +2.0 to default, now 10.0%
+01:12:30.730  KnobRelay: baseline for knob device is 8.0%
+01:12:30.730  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.731  KnobRelay: relayed +2.0 to default, now 54.0%
+01:12:30.732  KnobRelay: relayed +2.0 to default, now 56.0%
+01:12:30.732  KnobRelay: relayed +2.0 to default, now 58.0%
+01:12:30.733  KnobRelay: relayed +2.0 to default, now 60.0%
+01:12:30.734  KnobRelay: relayed +2.0 to default, now 62.0%
+01:12:30.734  KnobRelay: relayed +2.0 to default, now 64.0%
+01:12:30.735  KnobRelay: relayed +2.0 to default, now 66.0%
+01:12:30.736  KnobRelay: relayed +2.0 to default, now 68.0%
+01:12:30.736  KnobRelay: relayed +2.0 to default, now 70.0%
+01:12:30.737  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:12:30.738  KnobRelay: baseline for knob device is 8.0%
+01:12:30.738  KnobRelay: relayed +7.0 to default, now 57.0%
+01:12:30.739  KnobRelay: relayed +7.0 to default, now 64.0%
+01:12:30.740  KnobRelay: relayed +7.0 to default, now 71.0%
+01:12:30.740  KnobRelay: relayed +7.0 to default, now 78.0%
+01:12:30.741  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+01:12:30.742  KnobRelay: baseline for knob device is 8.0%
+01:12:30.742  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.743  KnobRelay: baseline for knob device is 8.0%
+01:12:30.744  KnobRelay: baseline for knob device is 8.0%
+01:12:30.744  KnobRelay: baseline for knob device is 8.0%
+01:12:30.745  KnobRelay: baseline for knob device is 8.0%
+01:12:30.746  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.746  KnobRelay: relayed -2.0 to default, now 50.0%
+01:12:30.747  KnobRelay: relayed -2.0 to default, now 48.0%
+01:12:30.748  KnobRelay: baseline for knob device is 8.0%
+01:12:30.748  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+01:12:30.749  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.750  KnobRelay: baseline for knob device is 8.0%
+01:12:30.751  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.751  KnobRelay: baseline for knob device is 8.0%
+01:12:30.752  KnobRelay: relayed +2.0 to default, now 52.0%
+01:12:30.752  KnobRelay: relayed +2.0 to default, now 54.0%
+01:12:30.753  KnobRelay: relayed +2.0 to default, now 56.0%
+01:12:30.754  KnobRelay: relayed +2.0 to default, now 58.0%
+01:12:30.754  KnobRelay: relayed +2.0 to default, now 60.0%
+01:12:30.755  KnobRelay: relayed +2.0 to default, now 62.0%
+01:12:30.756  KnobRelay: relayed +2.0 to default, now 64.0%
+01:12:30.757  KnobRelay: relayed +2.0 to default, now 66.0%
+01:12:30.757  KnobRelay: relayed +2.0 to default, now 68.0%
+01:12:30.758  KnobRelay: relayed +2.0 to default, now 70.0%
+01:12:30.759  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:12:30.759  KnobRelay: baseline for knob device is 8.0%
+01:13:37.835  KnobRelay: baseline for knob device is 8.0%
+01:13:37.841  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.844  KnobRelay: baseline for knob device is 8.0%
+01:13:37.844  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.845  KnobRelay: relayed +2.0 to default, now 54.0%
+01:13:37.847  KnobRelay: baseline for knob device is 8.0%
+01:13:37.848  KnobRelay: relayed -6.0 to default, now 44.0%
+01:13:37.849  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+01:13:37.850  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+01:13:37.850  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+01:13:37.851  KnobRelay: relayed -1.0 to default, now 43.0%
+01:13:37.852  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+01:13:37.854  KnobRelay: baseline for knob device is 8.0%
+01:13:37.854  KnobRelay: baseline for knob device is 8.0%
+01:13:37.856  KnobRelay: baseline for knob device is 8.0%
+01:13:37.856  KnobRelay: relayed +2.0 to default, now 10.0%
+01:13:37.857  KnobRelay: baseline for knob device is 8.0%
+01:13:37.858  KnobRelay: relayed +2.0 to default, now 10.0%
+01:13:37.864  KnobRelay: baseline for knob device is 8.0%
+01:13:37.865  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.866  KnobRelay: relayed +2.0 to default, now 54.0%
+01:13:37.867  KnobRelay: relayed +2.0 to default, now 56.0%
+01:13:37.868  KnobRelay: relayed +2.0 to default, now 58.0%
+01:13:37.869  KnobRelay: relayed +2.0 to default, now 60.0%
+01:13:37.869  KnobRelay: relayed +2.0 to default, now 62.0%
+01:13:37.870  KnobRelay: relayed +2.0 to default, now 64.0%
+01:13:37.871  KnobRelay: relayed +2.0 to default, now 66.0%
+01:13:37.872  KnobRelay: relayed +2.0 to default, now 68.0%
+01:13:37.873  KnobRelay: relayed +2.0 to default, now 70.0%
+01:13:37.874  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:13:37.875  KnobRelay: baseline for knob device is 8.0%
+01:13:37.875  KnobRelay: relayed +7.0 to default, now 57.0%
+01:13:37.876  KnobRelay: relayed +7.0 to default, now 64.0%
+01:13:37.877  KnobRelay: relayed +7.0 to default, now 71.0%
+01:13:37.877  KnobRelay: relayed +7.0 to default, now 78.0%
+01:13:37.878  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+01:13:37.880  KnobRelay: baseline for knob device is 8.0%
+01:13:37.880  KnobRelay: baseline for knob device is 8.0%
+01:13:37.881  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.882  KnobRelay: baseline for knob device is 8.0%
+01:13:37.883  KnobRelay: baseline for knob device is 8.0%
+01:13:37.884  KnobRelay: baseline for knob device is 8.0%
+01:13:37.885  KnobRelay: baseline for knob device is 8.0%
+01:13:37.885  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.886  KnobRelay: relayed -2.0 to default, now 50.0%
+01:13:37.887  KnobRelay: relayed -2.0 to default, now 48.0%
+01:13:37.888  KnobRelay: baseline for knob device is 8.0%
+01:13:37.888  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+01:13:37.889  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.890  KnobRelay: baseline for knob device is 8.0%
+01:13:37.890  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.891  KnobRelay: baseline for knob device is 8.0%
+01:13:37.892  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:37.892  KnobRelay: relayed +2.0 to default, now 54.0%
+01:13:37.893  KnobRelay: relayed +2.0 to default, now 56.0%
+01:13:37.893  KnobRelay: relayed +2.0 to default, now 58.0%
+01:13:37.894  KnobRelay: relayed +2.0 to default, now 60.0%
+01:13:37.895  KnobRelay: relayed +2.0 to default, now 62.0%
+01:13:37.896  KnobRelay: relayed +2.0 to default, now 64.0%
+01:13:37.896  KnobRelay: relayed +2.0 to default, now 66.0%
+01:13:37.897  KnobRelay: relayed +2.0 to default, now 68.0%
+01:13:37.898  KnobRelay: relayed +2.0 to default, now 70.0%
+01:13:37.899  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:13:37.900  KnobRelay: baseline for knob device is 8.0%
+01:13:50.276  KnobRelay: baseline for knob device is 8.0%
+01:13:50.282  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.285  KnobRelay: baseline for knob device is 8.0%
+01:13:50.285  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.286  KnobRelay: relayed +2.0 to default, now 54.0%
+01:13:50.288  KnobRelay: baseline for knob device is 8.0%
+01:13:50.288  KnobRelay: relayed -6.0 to default, now 44.0%
+01:13:50.289  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+01:13:50.290  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+01:13:50.291  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+01:13:50.292  KnobRelay: relayed -1.0 to default, now 43.0%
+01:13:50.293  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+01:13:50.294  KnobRelay: baseline for knob device is 8.0%
+01:13:50.295  KnobRelay: baseline for knob device is 8.0%
+01:13:50.296  KnobRelay: baseline for knob device is 8.0%
+01:13:50.297  KnobRelay: relayed +2.0 to default, now 10.0%
+01:13:50.298  KnobRelay: baseline for knob device is 8.0%
+01:13:50.298  KnobRelay: relayed +2.0 to default, now 10.0%
+01:13:50.299  KnobRelay: baseline for knob device is 8.0%
+01:13:50.300  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.301  KnobRelay: relayed +2.0 to default, now 54.0%
+01:13:50.302  KnobRelay: relayed +2.0 to default, now 56.0%
+01:13:50.303  KnobRelay: relayed +2.0 to default, now 58.0%
+01:13:50.304  KnobRelay: relayed +2.0 to default, now 60.0%
+01:13:50.304  KnobRelay: relayed +2.0 to default, now 62.0%
+01:13:50.306  KnobRelay: relayed +2.0 to default, now 64.0%
+01:13:50.306  KnobRelay: relayed +2.0 to default, now 66.0%
+01:13:50.307  KnobRelay: relayed +2.0 to default, now 68.0%
+01:13:50.308  KnobRelay: relayed +2.0 to default, now 70.0%
+01:13:50.309  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:13:50.310  KnobRelay: baseline for knob device is 8.0%
+01:13:50.310  KnobRelay: relayed +7.0 to default, now 57.0%
+01:13:50.311  KnobRelay: relayed +7.0 to default, now 64.0%
+01:13:50.312  KnobRelay: relayed +7.0 to default, now 71.0%
+01:13:50.312  KnobRelay: relayed +7.0 to default, now 78.0%
+01:13:50.313  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+01:13:50.314  KnobRelay: baseline for knob device is 8.0%
+01:13:50.315  KnobRelay: baseline for knob device is 8.0%
+01:13:50.315  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.316  KnobRelay: baseline for knob device is 8.0%
+01:13:50.317  KnobRelay: baseline for knob device is 8.0%
+01:13:50.317  KnobRelay: baseline for knob device is 8.0%
+01:13:50.318  KnobRelay: baseline for knob device is 8.0%
+01:13:50.319  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.319  KnobRelay: relayed -2.0 to default, now 50.0%
+01:13:50.320  KnobRelay: relayed -2.0 to default, now 48.0%
+01:13:50.321  KnobRelay: baseline for knob device is 8.0%
+01:13:50.321  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+01:13:50.322  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.323  KnobRelay: baseline for knob device is 8.0%
+01:13:50.324  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.325  KnobRelay: baseline for knob device is 8.0%
+01:13:50.325  KnobRelay: relayed +2.0 to default, now 52.0%
+01:13:50.326  KnobRelay: relayed +2.0 to default, now 54.0%
+01:13:50.326  KnobRelay: relayed +2.0 to default, now 56.0%
+01:13:50.327  KnobRelay: relayed +2.0 to default, now 58.0%
+01:13:50.328  KnobRelay: relayed +2.0 to default, now 60.0%
+01:13:50.328  KnobRelay: relayed +2.0 to default, now 62.0%
+01:13:50.329  KnobRelay: relayed +2.0 to default, now 64.0%
+01:13:50.330  KnobRelay: relayed +2.0 to default, now 66.0%
+01:13:50.330  KnobRelay: relayed +2.0 to default, now 68.0%
+01:13:50.331  KnobRelay: relayed +2.0 to default, now 70.0%
+01:13:50.331  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:13:50.332  KnobRelay: baseline for knob device is 8.0%
+01:14:16.147  KnobRelay: baseline for knob device is 8.0%
+01:14:16.153  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.156  KnobRelay: baseline for knob device is 8.0%
+01:14:16.156  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.157  KnobRelay: relayed +2.0 to default, now 54.0%
+01:14:16.159  KnobRelay: baseline for knob device is 8.0%
+01:14:16.159  KnobRelay: relayed -6.0 to default, now 44.0%
+01:14:16.160  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+01:14:16.161  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+01:14:16.162  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+01:14:16.163  KnobRelay: relayed -1.0 to default, now 43.0%
+01:14:16.164  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+01:14:16.165  KnobRelay: baseline for knob device is 8.0%
+01:14:16.166  KnobRelay: baseline for knob device is 8.0%
+01:14:16.167  KnobRelay: baseline for knob device is 8.0%
+01:14:16.167  KnobRelay: relayed +2.0 to default, now 10.0%
+01:14:16.168  KnobRelay: baseline for knob device is 8.0%
+01:14:16.169  KnobRelay: relayed +2.0 to default, now 10.0%
+01:14:16.170  KnobRelay: baseline for knob device is 8.0%
+01:14:16.171  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.172  KnobRelay: relayed +2.0 to default, now 54.0%
+01:14:16.172  KnobRelay: relayed +2.0 to default, now 56.0%
+01:14:16.173  KnobRelay: relayed +2.0 to default, now 58.0%
+01:14:16.174  KnobRelay: relayed +2.0 to default, now 60.0%
+01:14:16.174  KnobRelay: relayed +2.0 to default, now 62.0%
+01:14:16.175  KnobRelay: relayed +2.0 to default, now 64.0%
+01:14:16.176  KnobRelay: relayed +2.0 to default, now 66.0%
+01:14:16.177  KnobRelay: relayed +2.0 to default, now 68.0%
+01:14:16.178  KnobRelay: relayed +2.0 to default, now 70.0%
+01:14:16.179  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:14:16.180  KnobRelay: baseline for knob device is 8.0%
+01:14:16.180  KnobRelay: relayed +7.0 to default, now 57.0%
+01:14:16.181  KnobRelay: relayed +7.0 to default, now 64.0%
+01:14:16.181  KnobRelay: relayed +7.0 to default, now 71.0%
+01:14:16.182  KnobRelay: relayed +7.0 to default, now 78.0%
+01:14:16.183  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+01:14:16.184  KnobRelay: baseline for knob device is 8.0%
+01:14:16.184  KnobRelay: baseline for knob device is 8.0%
+01:14:16.185  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.186  KnobRelay: baseline for knob device is 8.0%
+01:14:16.186  KnobRelay: baseline for knob device is 8.0%
+01:14:16.187  KnobRelay: baseline for knob device is 8.0%
+01:14:16.187  KnobRelay: baseline for knob device is 8.0%
+01:14:16.188  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.189  KnobRelay: relayed -2.0 to default, now 50.0%
+01:14:16.189  KnobRelay: relayed -2.0 to default, now 48.0%
+01:14:16.190  KnobRelay: baseline for knob device is 8.0%
+01:14:16.191  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+01:14:16.191  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.192  KnobRelay: baseline for knob device is 8.0%
+01:14:16.193  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.194  KnobRelay: baseline for knob device is 8.0%
+01:14:16.194  KnobRelay: relayed +2.0 to default, now 52.0%
+01:14:16.195  KnobRelay: relayed +2.0 to default, now 54.0%
+01:14:16.195  KnobRelay: relayed +2.0 to default, now 56.0%
+01:14:16.196  KnobRelay: relayed +2.0 to default, now 58.0%
+01:14:16.197  KnobRelay: relayed +2.0 to default, now 60.0%
+01:14:16.197  KnobRelay: relayed +2.0 to default, now 62.0%
+01:14:16.198  KnobRelay: relayed +2.0 to default, now 64.0%
+01:14:16.198  KnobRelay: relayed +2.0 to default, now 66.0%
+01:14:16.199  KnobRelay: relayed +2.0 to default, now 68.0%
+01:14:16.200  KnobRelay: relayed +2.0 to default, now 70.0%
+01:14:16.200  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:14:16.201  KnobRelay: baseline for knob device is 8.0%
+01:17:46.949  KnobRelay: baseline for knob device is 8.0%
+01:17:46.956  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.958  KnobRelay: baseline for knob device is 8.0%
+01:17:46.959  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.960  KnobRelay: relayed +2.0 to default, now 54.0%
+01:17:46.962  KnobRelay: baseline for knob device is 8.0%
+01:17:46.963  KnobRelay: relayed -6.0 to default, now 44.0%
+01:17:46.964  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+01:17:46.964  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+01:17:46.965  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+01:17:46.966  KnobRelay: relayed -1.0 to default, now 43.0%
+01:17:46.967  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+01:17:46.968  KnobRelay: baseline for knob device is 8.0%
+01:17:46.968  KnobRelay: baseline for knob device is 8.0%
+01:17:46.970  KnobRelay: baseline for knob device is 8.0%
+01:17:46.970  KnobRelay: relayed +2.0 to default, now 10.0%
+01:17:46.971  KnobRelay: baseline for knob device is 8.0%
+01:17:46.972  KnobRelay: relayed +2.0 to default, now 10.0%
+01:17:46.973  KnobRelay: baseline for knob device is 8.0%
+01:17:46.973  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.974  KnobRelay: relayed +2.0 to default, now 54.0%
+01:17:46.975  KnobRelay: relayed +2.0 to default, now 56.0%
+01:17:46.975  KnobRelay: relayed +2.0 to default, now 58.0%
+01:17:46.976  KnobRelay: relayed +2.0 to default, now 60.0%
+01:17:46.977  KnobRelay: relayed +2.0 to default, now 62.0%
+01:17:46.978  KnobRelay: relayed +2.0 to default, now 64.0%
+01:17:46.979  KnobRelay: relayed +2.0 to default, now 66.0%
+01:17:46.980  KnobRelay: relayed +2.0 to default, now 68.0%
+01:17:46.980  KnobRelay: relayed +2.0 to default, now 70.0%
+01:17:46.981  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:17:46.982  KnobRelay: baseline for knob device is 8.0%
+01:17:46.983  KnobRelay: relayed +7.0 to default, now 57.0%
+01:17:46.984  KnobRelay: relayed +7.0 to default, now 64.0%
+01:17:46.984  KnobRelay: relayed +7.0 to default, now 71.0%
+01:17:46.985  KnobRelay: relayed +7.0 to default, now 78.0%
+01:17:46.985  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+01:17:46.986  KnobRelay: baseline for knob device is 8.0%
+01:17:46.987  KnobRelay: baseline for knob device is 8.0%
+01:17:46.987  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.988  KnobRelay: baseline for knob device is 8.0%
+01:17:46.989  KnobRelay: baseline for knob device is 8.0%
+01:17:46.990  KnobRelay: baseline for knob device is 8.0%
+01:17:46.990  KnobRelay: baseline for knob device is 8.0%
+01:17:46.991  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.992  KnobRelay: relayed -2.0 to default, now 50.0%
+01:17:46.992  KnobRelay: relayed -2.0 to default, now 48.0%
+01:17:46.993  KnobRelay: baseline for knob device is 8.0%
+01:17:46.994  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+01:17:46.994  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.995  KnobRelay: baseline for knob device is 8.0%
+01:17:46.996  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.997  KnobRelay: baseline for knob device is 8.0%
+01:17:46.997  KnobRelay: relayed +2.0 to default, now 52.0%
+01:17:46.998  KnobRelay: relayed +2.0 to default, now 54.0%
+01:17:46.999  KnobRelay: relayed +2.0 to default, now 56.0%
+01:17:47.000  KnobRelay: relayed +2.0 to default, now 58.0%
+01:17:47.000  KnobRelay: relayed +2.0 to default, now 60.0%
+01:17:47.001  KnobRelay: relayed +2.0 to default, now 62.0%
+01:17:47.002  KnobRelay: relayed +2.0 to default, now 64.0%
+01:17:47.002  KnobRelay: relayed +2.0 to default, now 66.0%
+01:17:47.003  KnobRelay: relayed +2.0 to default, now 68.0%
+01:17:47.004  KnobRelay: relayed +2.0 to default, now 70.0%
+01:17:47.004  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+01:17:47.005  KnobRelay: baseline for knob device is 8.0%
+11:21:14.374  Startup begin
+11:21:14.513  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+11:21:14.547  Watching render device: Speakers (Sound Blaster X3)
+11:21:14.573  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+11:21:14.611  Watching render device: SPDIF Out (Sound Blaster X3)
+11:21:14.633  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+11:21:14.635  KnobRelay: baseline for knob device is 0.0%
+11:21:14.897  Startup complete
+11:21:24.879  No longer active, dropping: Speakers (Sound Blaster X3)
+11:21:24.880  No longer active, dropping: SPDIF Out (Sound Blaster X3)
+11:21:26.095  Watching render device: Speakers (Sound Blaster X3)
+11:21:26.175  Watching render device: SPDIF Out (Sound Blaster X3)
+11:22:00.506  KnobRelay: relayed +1.0 to default, now 2.0%
+11:22:00.604  KnobRelay: relayed +2.0 to default, now 5.0%
+11:22:00.701  KnobRelay: relayed +1.0 to default, now 5.0%
+11:22:08.459  KnobRelay: relayed -1.0 to default, now 2.0%
+11:23:54.309  KnobRelay: relayed +1.0 to default, now 5.0%
+11:25:55.911  KnobRelay: baseline for knob device is 8.0%
+11:25:55.916  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.919  KnobRelay: baseline for knob device is 8.0%
+11:25:55.919  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.920  KnobRelay: relayed +2.0 to default, now 54.0%
+11:25:55.922  KnobRelay: baseline for knob device is 8.0%
+11:25:55.923  KnobRelay: relayed -6.0 to default, now 44.0%
+11:25:55.923  KnobRelay: ignoring implausible step 48.0 points, keeping prior reference point
+11:25:55.924  KnobRelay: ignoring implausible step 96.0 points, keeping prior reference point
+11:25:55.925  KnobRelay: ignoring implausible step 97.0 points, keeping prior reference point
+11:25:55.926  KnobRelay: relayed -1.0 to default, now 43.0%
+11:25:55.926  KnobRelay: ignoring implausible step 59.0 points, keeping prior reference point
+11:25:55.927  KnobRelay: baseline for knob device is 8.0%
+11:25:55.928  KnobRelay: baseline for knob device is 8.0%
+11:25:55.929  KnobRelay: baseline for knob device is 8.0%
+11:25:55.929  KnobRelay: relayed +2.0 to default, now 10.0%
+11:25:55.930  KnobRelay: baseline for knob device is 8.0%
+11:25:55.931  KnobRelay: relayed +2.0 to default, now 10.0%
+11:25:55.931  KnobRelay: baseline for knob device is 8.0%
+11:25:55.932  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.933  KnobRelay: relayed +2.0 to default, now 54.0%
+11:25:55.934  KnobRelay: relayed +2.0 to default, now 56.0%
+11:25:55.934  KnobRelay: relayed +2.0 to default, now 58.0%
+11:25:55.935  KnobRelay: relayed +2.0 to default, now 60.0%
+11:25:55.936  KnobRelay: relayed +2.0 to default, now 62.0%
+11:25:55.937  KnobRelay: relayed +2.0 to default, now 64.0%
+11:25:55.938  KnobRelay: relayed +2.0 to default, now 66.0%
+11:25:55.938  KnobRelay: relayed +2.0 to default, now 68.0%
+11:25:55.939  KnobRelay: relayed +2.0 to default, now 70.0%
+11:25:55.940  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+11:25:55.941  KnobRelay: baseline for knob device is 8.0%
+11:25:55.942  KnobRelay: relayed +7.0 to default, now 57.0%
+11:25:55.943  KnobRelay: relayed +7.0 to default, now 64.0%
+11:25:55.943  KnobRelay: relayed +7.0 to default, now 71.0%
+11:25:55.944  KnobRelay: relayed +7.0 to default, now 78.0%
+11:25:55.945  KnobRelay: SAFETY TRIP - moved 35 points over a sustained few seconds. Disabled for the rest of this session.
+11:25:55.946  KnobRelay: baseline for knob device is 8.0%
+11:25:55.947  KnobRelay: baseline for knob device is 8.0%
+11:25:55.947  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.948  KnobRelay: baseline for knob device is 8.0%
+11:25:55.949  KnobRelay: baseline for knob device is 8.0%
+11:25:55.950  KnobRelay: baseline for knob device is 8.0%
+11:25:55.950  KnobRelay: baseline for knob device is 8.0%
+11:25:55.951  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.952  KnobRelay: relayed -2.0 to default, now 50.0%
+11:25:55.952  KnobRelay: relayed -2.0 to default, now 48.0%
+11:25:55.953  KnobRelay: baseline for knob device is 8.0%
+11:25:55.954  KnobRelay: ignoring implausible step 82.0 points, keeping prior reference point
+11:25:55.955  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.956  KnobRelay: baseline for knob device is 8.0%
+11:25:55.956  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.957  KnobRelay: baseline for knob device is 8.0%
+11:25:55.957  KnobRelay: relayed +2.0 to default, now 52.0%
+11:25:55.958  KnobRelay: relayed +2.0 to default, now 54.0%
+11:25:55.959  KnobRelay: relayed +2.0 to default, now 56.0%
+11:25:55.960  KnobRelay: relayed +2.0 to default, now 58.0%
+11:25:55.961  KnobRelay: relayed +2.0 to default, now 60.0%
+11:25:55.961  KnobRelay: relayed +2.0 to default, now 62.0%
+11:25:55.962  KnobRelay: relayed +2.0 to default, now 64.0%
+11:25:55.963  KnobRelay: relayed +2.0 to default, now 66.0%
+11:25:55.963  KnobRelay: relayed +2.0 to default, now 68.0%
+11:25:55.964  KnobRelay: relayed +2.0 to default, now 70.0%
+11:25:55.964  KnobRelay: SAFETY TRIP - moved 22 points in under a second. Disabled for the rest of this session.
+11:25:55.965  KnobRelay: baseline for knob device is 8.0%
+11:27:46.773  Startup begin
+11:27:46.914  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+11:27:46.954  Watching render device: Speakers (Sound Blaster X3)
+11:27:46.986  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+11:27:47.036  Watching render device: SPDIF Out (Sound Blaster X3)
+11:27:47.061  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+11:27:47.063  KnobRelay: baseline for knob device is 4.0%
+11:27:47.115  Startup complete
+11:33:57.721  KnobRelay: relayed -1.8 to default, now 12.0%
+11:33:58.019  KnobRelay: relayed -2.2 to default, now 9.8%
+11:34:00.397  KnobRelay: relayed +2.2 to default, now 12.0%
+11:34:00.408  KnobRelay: relayed +1.8 to default, now 13.8%
+11:34:00.419  KnobRelay: relayed +2.0 to default, now 15.8%
+11:34:00.450  KnobRelay: relayed +2.0 to default, now 17.8%
+11:34:00.645  KnobRelay: relayed +2.0 to default, now 19.8%
+11:34:01.335  KnobRelay: relayed +2.0 to default, now 21.9%
+11:34:01.354  KnobRelay: relayed +2.0 to default, now 23.8%
+11:34:01.413  KnobRelay: relayed +2.0 to default, now 25.9%
+11:34:01.487  KnobRelay: relayed +2.0 to default, now 27.8%
+11:34:01.591  KnobRelay: relayed +2.1 to default, now 29.9%
+11:34:02.370  KnobRelay: relayed -2.1 to default, now 27.8%
+11:34:02.400  KnobRelay: relayed -2.0 to default, now 25.9%
+11:34:02.426  KnobRelay: SAFETY TRIP - moved 30 points over a sustained few seconds. Disabled for the rest of this session.
+

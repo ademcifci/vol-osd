@@ -1,0 +1,60 @@
+Vol OSD diagnostics report
+Generated: 2026-09-12 11:52:49 +10:00
+
+--- Version ---
+App version: 1.1.0.0
+OS: Microsoft Windows 10.0.26200
+.NET runtime: .NET 8.0.30
+
+--- Audio devices (current) ---
+  Digital Audio (S/PDIF) (High Definition Audio Device)    4.0%
+  Speakers (Sound Blaster X3)                         4.0%
+  Speakers (Jabra EVOLVE 20 SE)                      19.8%
+  SPDIF Out (Sound Blaster X3)                        4.0%  [KNOB]
+  FxSound Speakers (FxSound Audio Enhancer)           4.0%  [DEFAULT]
+
+--- Settings ---
+{
+  "Position": "BottomCenter",
+  "Scale": 0.8,
+  "DisplayDurationMs": 3250,
+  "Theme": "Auto",
+  "StartWithWindows": true,
+  "DarkBackgroundColorHex": "#1E1E1E",
+  "DarkForegroundColorHex": "#FFFFFF",
+  "DarkBarColorHex": "accent",
+  "KnobDeviceId": "{0.0.0.00000000}.{ce2fb0e7-443b-4671-b3ab-3c71bcab6d3f}",
+  "LightBackgroundColorHex": "#E4E4E6",
+  "LightForegroundColorHex": "#1A1A1A",
+  "LightBarColorHex": "accent"
+}
+
+--- Log ---
+11:49:16.211  Startup begin
+11:49:16.356  Watching render device: Digital Audio (S/PDIF) (High Definition Audio Device)
+11:49:16.390  Watching render device: Speakers (Sound Blaster X3)
+11:49:16.416  Watching render device: Speakers (Jabra EVOLVE 20 SE)
+11:49:16.453  Watching render device: SPDIF Out (Sound Blaster X3)
+11:49:16.474  Watching render device: FxSound Speakers (FxSound Audio Enhancer)
+11:49:16.476  KnobRelay: baseline for knob device is 4.0%
+11:49:16.524  Startup complete
+11:50:16.609  KnobRelay: relayed -1.8 to default, now 24.0%
+11:50:18.246  KnobRelay: relayed -2.2 to default, now 21.8%
+11:50:30.526  KnobRelay: relayed +2.2 to default, now 24.0%
+11:50:31.717  KnobRelay: relayed +1.8 to default, now 25.9%
+11:50:32.986  KnobRelay: relayed +2.0 to default, now 27.9%
+11:50:34.105  KnobRelay: relayed +2.0 to default, now 29.8%
+11:50:38.838  KnobRelay: relayed +2.0 to default, now 31.8%
+11:50:39.802  KnobRelay: relayed +2.0 to default, now 33.9%
+11:50:44.064  KnobRelay: relayed +2.0 to default, now 35.8%
+11:50:45.748  KnobRelay: relayed +2.0 to default, now 37.9%
+11:50:58.081  KnobRelay: relayed -2.0 to default, now 35.8%
+11:50:59.148  KnobRelay: relayed -2.0 to default, now 33.9%
+11:51:00.039  KnobRelay: relayed -2.0 to default, now 31.8%
+11:51:00.562  KnobRelay: relayed -2.0 to default, now 29.8%
+11:51:01.642  KnobRelay: relayed -2.0 to default, now 27.9%
+11:51:02.132  KnobRelay: relayed -2.0 to default, now 25.9%
+11:51:03.062  KnobRelay: relayed -1.8 to default, now 24.0%
+11:51:03.527  KnobRelay: relayed -2.2 to default, now 21.8%
+11:52:24.519  KnobRelay: relayed -2.0 to default, now 19.8%
+
